@@ -1,6 +1,6 @@
 import json, time
 
-import register
+from register import Register
 
 def setup():
     # global variables
@@ -16,6 +16,7 @@ def setup():
         gpio.setup(g, gpio.OUT)
 
 def show8x8(graph, sec=2):
+    global register
     temp = [
         '10000000',
         '01000000',
@@ -60,8 +61,10 @@ def makeGraph(words):
     return graph
 
 if __name__ == '__main__':
-    # words = "hello"
+    setup()
+    register = Register(DS, SHCP, STCP)
 
+    # words = "hello"
     # print8x8(words, delay=0.5)
 
     t = ['11110000'] * 4 + ['00001111'] * 4
