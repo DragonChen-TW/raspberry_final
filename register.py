@@ -14,3 +14,19 @@ class Register:
             gpio.output(self.DS[i], int(d))
             gpio.output(self.SHCP[i], gpio.HIGH)
         gpio.output(self.STCP[i], gpio.HIGH)
+
+if __name__ == '__main__':
+    try:
+        DS =    [17, 13]
+        SHCP =  [22, 26]
+        STCP =  [27, 29]
+
+        gpio.setmode(gpio.BCM)
+        for g in DS + SHCP + STCP:
+            gpio.setup(g, gpio.OUT)
+
+        register = Register(DS, SHCP, STCP)
+
+        register.shift(0, ['11111111'])
+    finally:
+        gpio.cleanup()
