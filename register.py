@@ -9,6 +9,7 @@ class Register:
 
     def shift(self, i, shift_data):
         gpio.output(self.STCP[i], gpio.LOW)
+        print(shift_data)
         for d in shift_data:
             gpio.output(self.SHCP[i], gpio.LOW)
             gpio.output(self.DS[i], int(d))
@@ -27,6 +28,7 @@ if __name__ == '__main__':
 
         register = Register(DS, SHCP, STCP)
 
-        register.shift(0, ['11111111'])
+        register.shift(0, '11111111')
+        time.sleep(10)
     finally:
         gpio.cleanup()
