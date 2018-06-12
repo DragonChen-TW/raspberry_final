@@ -63,11 +63,14 @@ def makeGraph(words):
     return graph
 
 if __name__ == '__main__':
-    setup()
-    register = Register(DS, SHCP, STCP)
+    try:
+        setup()
+        register = Register(DS, SHCP, STCP)
 
-    # words = "hello"
-    # print8x8(words, delay=0.5)
+        # words = "hello"
+        # print8x8(words, delay=0.5)
 
-    t = ['11110000'] * 4 + ['00001111'] * 4
-    show8x8(t)
+        t = ['11110000'] * 4 + ['00001111'] * 4
+        show8x8(t)
+    finally:
+        gpio.cleanup()
