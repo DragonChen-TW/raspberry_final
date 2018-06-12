@@ -35,7 +35,7 @@ def show8x8(graph, sec=2):
         '11111101',
         '11111110',
     ]
-    for _ in range(int(500 * sec)):
+    for _ in range(int(200 * sec)):
         for i in range(8):
             register.shift(0, graph[i])
 
