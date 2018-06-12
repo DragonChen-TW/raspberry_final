@@ -30,7 +30,6 @@ if __name__ == '__main__':
         # register.shift(1, '00000000')
         # time.sleep(10)
 
-        register.shift(0, '11111111')
         temp = [
             '10000000',
             '01000000',
@@ -41,9 +40,9 @@ if __name__ == '__main__':
             '00000010',
             '00000001',
         ]
+        register.shift(0, '11111111')
         register.shift(1, '00000000')
-        time.sleep(3)
-        register.shift(1, '11111111')
-        gpio.cleanup()
+        time.sleep(0.001)
+        register.shift(1, '10000001')
     finally:
         gpio.cleanup()

@@ -6,15 +6,23 @@ from register import Register
 def setup():
     # global variables
     global DS, SHCP, STCP
+    global register
     # global CLK, MOSI, CE
     # gpio left -----OOO--------000-
     DS =    [17, 13]
     SHCP =  [22, 26]
     STCP =  [27, 29]
 
+    # gpio setup
     gpio.setmode(gpio.BCM)
     for g in DS + SHCP + STCP:
         gpio.setup(g, gpio.OUT)
+
+
+    # register and init LED
+    register = Register(DS, SHCP, STCP)
+    register.shift(1, '11111111')
+    register.shift(0, '00000000')
 
 def show8x8(graph, sec=2):
     global register
@@ -65,7 +73,6 @@ def makeGraph(words):
 if __name__ == '__main__':
     try:
         setup()
-        register = Register(DS, SHCP, STCP)
 
         # words = "hello"
         # print8x8(words, delay=0.5)
