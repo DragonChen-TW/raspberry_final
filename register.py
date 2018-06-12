@@ -29,5 +29,9 @@ if __name__ == '__main__':
 
         register.shift(1, '11111111')
         time.sleep(10)
+
+        register.shift(0, '11111111')
+        register.shift(1, '11111111')
+        gpio.cleanup()
     finally:
         gpio.cleanup()
