@@ -22,28 +22,27 @@ def setup():
     # register and init LED
     register = Register(DS, SHCP, STCP)
     register.shift(1, '11111111')
-    register.shift(0, '00000000')
 
 def show8x8(graph, sec=2):
     global register
     temp = [
-        '10000000',
-        '01000000',
-        '00100000',
-        '00010000',
-        '00001000',
-        '00000100',
-        '00000010',
-        '00000001',
+        '01111111',
+        '10111111',
+        '11011111',
+        '11101111',
+        '11110111',
+        '11111011',
+        '11111101',
+        '11111110',
     ]
     # for _ in range(int(100 * sec)):
     for i in range(8):
         register.shift(1, graph[i])
         print(graph[i])
 
-        register.shift(0, '11111111')
+        register.shift(1, temp[i])
         time.sleep(0.01)
-        register.shift(0, temp[i])
+        register.shift(1, '11111111')
     time.sleep(10)
 
 

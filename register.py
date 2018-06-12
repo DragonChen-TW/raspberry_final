@@ -43,13 +43,13 @@ if __name__ == '__main__':
             '11111101',
             '11111110',
         ]
-        # for i in range(8):
-        #     register.shift(1, temp[i])
-        #     time.sleep(0.01)
-        #     register.shift(1, '11111111')
-        register.shift(1, '00000000')
-        time.sleep(0.1)
-        register.shift(1, '11111111')
+        for i in range(8):
+            register.shift(1, temp[i])
+            time.sleep(0.05)
+            register.shift(1, '11111111')
+        # register.shift(1, '00000000')
+        # time.sleep(0.1)
+        # register.shift(1, '11111111')
 
         time.sleep(5)
     finally:
