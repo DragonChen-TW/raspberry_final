@@ -27,7 +27,7 @@ if __name__ == '__main__':
 
         register = Register(DS, SHCP, STCP)
 
-        register.shift(0, '11111111')
+        register.shift(1, '11111111')
         time.sleep(10)
     finally:
         gpio.cleanup()
