@@ -15,12 +15,13 @@ def setup():
         gpio.setup(g, gpio.OUT)
 
 def shift(i, shift_data):
-    gpio.output(STCP, gpio.LOW)
+    global DS, SHCP, STCP
+    gpio.output(STCP[i], gpio.LOW)
     for d in shift_data:
         gpio.output(SHCP[i], gpio.LOW)
         gpio.output(DS[i], int(d))
         gpio.output(SHCP[i], gpio.HIGH)
-    gpio.output(STCP, gpio.HIGH)
+    gpio.output(STCP[i], gpio.HIGH)
 
 def hc_out(data):
     for each in data:

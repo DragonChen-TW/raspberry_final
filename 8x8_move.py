@@ -8,8 +8,8 @@ def setup():
     # global CLK, MOSI, CE
     # gpio left -----OOO--------000-
     DS =    [17, 13]
-    SHCP =  [27, 29]
-    STCP =  [22, 26]
+    SHCP =  [22, 26]
+    STCP =  [27, 29]
 
     gpio.setmode(gpio.BCM)
     for g in DS + SHCP + STCP:
