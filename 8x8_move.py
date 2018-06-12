@@ -11,7 +11,7 @@ def setup():
     # gpio left -----OOO--------000-
     DS =    [17, 13]
     SHCP =  [22, 26]
-    STCP =  [27, 29]
+    STCP =  [27, 19]
 
     # gpio setup
     gpio.setmode(gpio.BCM)
@@ -41,7 +41,7 @@ def show8x8(graph, sec=2):
         register.shift(1, graph[i])
         print(graph[i])
 
-        register.shift(0, '00000000')
+        register.shift(0, '11111111')
         time.sleep(0.01)
         register.shift(0, temp[i])
     time.sleep(10)
