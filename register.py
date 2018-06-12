@@ -27,10 +27,22 @@ if __name__ == '__main__':
 
         register = Register(DS, SHCP, STCP)
 
-        register.shift(1, '11111111')
-        time.sleep(10)
+        # register.shift(1, '00000000')
+        # time.sleep(10)
 
         register.shift(0, '11111111')
+        temp = [
+            '10000000',
+            '01000000',
+            '00100000',
+            '00010000',
+            '00001000',
+            '00000100',
+            '00000010',
+            '00000001',
+        ]
+        register.shift(1, '00000000')
+        time.sleep(3)
         register.shift(1, '11111111')
         gpio.cleanup()
     finally:
