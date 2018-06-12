@@ -43,6 +43,7 @@ def show8x8(graph, sec=2):
         register.shift(1, temp[i])
         time.sleep(0.05)
         register.shift(1, '11111111')
+        time.sleep(1)
     time.sleep(10)
 
 
