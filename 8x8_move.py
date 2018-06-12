@@ -1,3 +1,4 @@
+import RPi.GPIO as gpio
 import json, time
 
 from register import Register
