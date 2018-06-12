@@ -18,7 +18,7 @@ def show8x8(image, sec):
     for _ in range(int(100 * sec)):
         for i in range(1):
             for j in range(8):
-                if image[i][j]:
+                if int(image[i][j]):
                     # gpio.output(row_led[j], gpio.HIGH)
                     print('1')
                 else:
