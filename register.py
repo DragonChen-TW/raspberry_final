@@ -15,13 +15,6 @@ class Register:
             gpio.output(self.SHCP[i], gpio.HIGH)
         gpio.output(self.STCP[i], gpio.HIGH)
 
-        gpio.output(self.STCP[i], gpio.LOW)
-        for d in range(8):
-            gpio.output(self.SHCP[i], gpio.LOW)
-            gpio.output(self.DS[i], 0)
-            gpio.output(self.SHCP[i], gpio.HIGH)
-        gpio.output(self.STCP[i], gpio.HIGH)
-
 if __name__ == '__main__':
     try:
         DS =    [17, 13]

@@ -43,6 +43,8 @@ def show8x8(graph, sec=2):
             time.sleep(0.001)
             register.shift(1, '11111111')
 
+            register.shift(0, '00000000')
+
 
 def print8x8(words, step=1, width=8, delay=1):
     graph = makeGraph(words)
