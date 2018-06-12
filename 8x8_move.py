@@ -35,12 +35,12 @@ def show8x8(graph, sec=2):
         '11111101',
         '11111110',
     ]
-    for _ in range(int(100 * sec)):
+    for _ in range(int(500 * sec)):
         for i in range(8):
             register.shift(0, graph[i])
 
             register.shift(1, temp[i])
-            time.sleep(0.01)
+            time.sleep(0.001)
             register.shift(1, '11111111')
 
 
