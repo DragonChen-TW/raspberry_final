@@ -41,8 +41,8 @@ if __name__ == '__main__':
             '00000001',
         ]
         register.shift(0, '11111111')
-        register.shift(1, '00000000')
+        register.shift(1, '11111110')
         time.sleep(0.001)
-        register.shift(1, '10000001')
+        register.shift(1, '11111111')
     finally:
         gpio.cleanup()
