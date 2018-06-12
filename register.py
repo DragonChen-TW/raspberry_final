@@ -19,7 +19,7 @@ if __name__ == '__main__':
     try:
         DS =    [17, 13]
         SHCP =  [22, 26]
-        STCP =  [27, 29]
+        STCP =  [27, 19]
 
         gpio.setmode(gpio.BCM)
         for g in DS + SHCP + STCP:
