@@ -1,39 +1,32 @@
 import RPi.GPIO as gpio
+import time
 
 def setup():
     # global variables
     global DS, SHCP, STCP
     # global CLK, MOSI, CE
-    DS = 17
-    SHCP = 27
-    STCP = 22
+    # gpio left -----OOO--------000-
+    DS =    [17, 13]
+    SHCP =  [27, 29]
+    STCP =  [22, 26]
 
     gpio.setmode(gpio.BCM)
-    gpio.setup(DS, gpio.OUT)
-    gpio.setup(SHCP, gpio.OUT)
-    gpio.setup(STCP, gpio.OUT)
+    for g in DS + SHCP + STCP:
+        gpio.setup(g, gpio.OUT)
 
-def makeTick(gpio_num):
-    gpio.output(gpio_num, gpio.HIGH)
-    gpio.output(gpio_num, gpio.LOW)
-
-def shift(shift_data):
-    for i in shift_data:
-        gpio.output(SHCP, gpio.LOW)
-        gpio.output(DS, int(i))
-        gpio.output(SHCP, gpio.HIGH)
-        gpio.output(DS, 0)
-
+def shift(i, shift_data):
+    gpio.output(STCP, gpio.LOW)
+    for d in shift_data:
+        gpio.output(SHCP[i], gpio.LOW)
+        gpio.output(DS[i], int(d))
+        gpio.output(SHCP[i], gpio.HIGH)
+    gpio.output(STCP, gpio.HIGH)
 
 def hc_out(data):
     for each in data:
         gpio.output(STCP, gpio.LOW)
         shift(each)
         gpio.output(STCP, gpio.HIGH)
-
-        # gpio.output(STCP, gpio.LOW)
-        # shift('00000000')
-        # gpio.output(STCP, gpio.HIGH)
 
 if __name__ =="__main__":
     try:
