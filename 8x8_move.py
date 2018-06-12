@@ -35,16 +35,13 @@ def show8x8(graph, sec=2):
         '11111101',
         '11111110',
     ]
-    # for _ in range(int(100 * sec)):
-    for i in range(8):
-        register.shift(0, graph[i])
-        time.sleep(0.01)
+    for _ in range(int(100 * sec)):
+        for i in range(8):
+            register.shift(0, graph[i])
 
-        register.shift(1, temp[i])
-        time.sleep(0.05)
-        register.shift(1, '11111111')
-        time.sleep(1)
-    time.sleep(10)
+            register.shift(1, temp[i])
+            time.sleep(0.01)
+            register.shift(1, '11111111')
 
 
 def print8x8(words, step=1, width=8, delay=1):
