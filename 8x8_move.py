@@ -38,12 +38,10 @@ def show8x8(graph, sec=2):
     for _ in range(int(500 * sec)):
         for i in range(8):
             register.shift(0, graph[i])
-            
+
             register.shift(1, temp[i])
             time.sleep(0.001)
             register.shift(1, '11111111')
-
-
 
 def print8x8(words, step=1, width=8, delay=1):
     graph = makeGraph(words)
@@ -72,11 +70,11 @@ if __name__ == '__main__':
     try:
         setup()
 
-        # words = "hello"
-        # print8x8(words, delay=0.5)
+        words = "hello"
+        print8x8(words, delay=0.5)
 
-        t = ['11110000'] * 4 + ['00001111'] * 4
-        print(t)
-        show8x8(t)
+        # t = ['11110000'] * 4 + ['00001111'] * 4
+        # print(t)
+        # show8x8(t)
     finally:
         gpio.cleanup()
