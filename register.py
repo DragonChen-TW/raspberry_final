@@ -9,7 +9,6 @@ class Register:
 
     def shift(self, i, shift_data):
         gpio.output(self.STCP[i], gpio.LOW)
-        print(shift_data)
         for d in shift_data:
             gpio.output(self.SHCP[i], gpio.LOW)
             gpio.output(self.DS[i], int(d))
