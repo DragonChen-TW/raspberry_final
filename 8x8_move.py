@@ -3,6 +3,15 @@ import json, time
 
 from register import Register
 
+def makeTick():
+    global DS, SHCP, STCP
+    for g in STCP:
+        gpio.output(g, gpio.HIGH)
+        gpio.output(g, gpio.LOW)
+        
+        
+    
+
 def setup():
     # global variables
     global DS, SHCP, STCP
@@ -69,12 +78,16 @@ def makeGraph(words):
 if __name__ == '__main__':
     try:
         setup()
-
+        gpio.setup(18,gpio.OUT)
+        gpio.output(18,gpio.HIGH)
         words = "hello"
         print8x8(words, delay=0.5)
 
         # t = ['11110000'] * 4 + ['00001111'] * 4
         # print(t)
         # show8x8(t)
+        gpio.output(18,gpio.LOW)
+        makeTick()
     finally:
+
         gpio.cleanup()
