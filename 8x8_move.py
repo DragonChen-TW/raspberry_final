@@ -23,7 +23,7 @@ def setup():
     register = Register(DS, SHCP, STCP)
     register.shift(1, '11111111')
 
-def show8x8(graph, sec=2):
+def show8x8(graph, sec=1):
     global register
     temp = [
         '11111110',
@@ -54,7 +54,7 @@ def print8x8(words, step=1, width=8, delay=1):
         # print to 8x8
         show8x8(graph_slice, sec=delay)
 
-        time.sleep(delay)
+        # time.sleep(delay)
 
 def makeGraph(words):
     with open('data/hello.json') as json_f:
