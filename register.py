@@ -7,7 +7,7 @@ class Register:
         self.SHCP = SHCP
         self.STCP = STCP
 
-    def makeTick(gpio_num):
+    def makeTick(self, gpio_num):
         gpio.output(gpio_num, gpio.HIGH)
         gpio.output(gpio_num, gpio.LOW)
 
