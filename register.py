@@ -7,13 +7,15 @@ class Register:
         self.SHCP = SHCP
         self.STCP = STCP
 
+    def makeTick(gpio_num):
+        gpio.output(gpio_num, gpio.HIGH)
+        gpio.output(gpio_num, gpio.LOW)
+
     def shift(self, i, shift_data):
-        gpio.output(self.STCP[i], gpio.LOW)
         for d in shift_data:
-            gpio.output(self.SHCP[i], gpio.LOW)
             gpio.output(self.DS[i], int(d))
-            gpio.output(self.SHCP[i], gpio.HIGH)
-        gpio.output(self.STCP[i], gpio.HIGH)
+            self.makeTick(self.SHCP[i])
+        self.makeTick(self.STCP[i])
 
 if __name__ == '__main__':
     try:
