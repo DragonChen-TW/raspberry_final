@@ -51,8 +51,6 @@ def print8x8(graph, step=1, width=8, delay=1):
         # print to 8x8
         show8x8(graph_slice, sec=delay)
 
-        # time.sleep(delay)
-
 def makeGraph(num_layer):
     with open('data/layer.json') as json_f:
         data = json.loads(json_f.read())
@@ -76,8 +74,6 @@ def makeWords(words):
 if __name__ == '__main__':
     try:
         setup()
-
-        gpio.input(12)
 
         # words = "hello"
         # graph = makeWords(words)
