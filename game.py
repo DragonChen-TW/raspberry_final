@@ -11,10 +11,12 @@ if __name__ == '__main__':
 
     # btn
     gpio.setmode(gpio.BCM)
-    LED.setup(12, 'in')
+
+    btn_gpio = 21
+    LED.setup(btn_gpio, 'in')
 
     while True:
-        if not gpio.input(12):
+        if not gpio.input(btn_gpio):
             print('press')
             matrix.now_layer += 1
 
