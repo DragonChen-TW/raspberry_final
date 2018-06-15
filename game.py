@@ -6,7 +6,7 @@ from matrix import LEDMatrix
 
 if __name__ == '__main__':
     try:
-        matrix = LEDMatrix()
+        matrix = LEDMatrix(100)
 
         matrix.startPrint()
         print('a')
@@ -21,7 +21,6 @@ if __name__ == '__main__':
 
         print('start while')
         while True:
-
             if not gpio.input(btn_gpio):
                 print('press')
                 matrix.now_layer += 1
