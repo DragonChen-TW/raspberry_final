@@ -8,11 +8,11 @@ class LEDMatrix:
         self.DS =    [17, 13]
         self.SHCP =  [22, 26]
         self.STCP =  [27, 19]
-        self.register = Register(DS, SHCP, STCP)
+        self.register = Register(self.DS, self.SHCP, self.STCP)
 
         # gpio setup
         gpio.setmode(gpio.BCM)
-        for g in DS + SHCP + STCP:
+        for g in self.DS + self.SHCP + self.STCP:
             gpio.setup(g, gpio.OUT)
 
         self.now_layer = 0
@@ -32,7 +32,7 @@ class LEDMatrix:
         ]
         for _ in range(int(100 * sec)):
             for i in range(8):
-                register.shift(0, graph[i])
+                register.shift(0, self.graph[i])
 
                 register.shift(1, temp[i])
                 time.sleep(0.001)
