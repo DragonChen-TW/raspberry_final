@@ -59,7 +59,7 @@ def makeGraph(num_layer):
     graph = []
     for i in range(num_layer):
         r_int = random.randint(0, len(keys) - 1)
-        graph.append(data[keys[r_int]])
+        graph += data[keys[r_int]]
 
     return graph
 
