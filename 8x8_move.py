@@ -40,15 +40,8 @@ class LEDMatrix:
             self.register.shift(1, '11111111')
 
     def startPrint(self, step=2, width=8, delay=1):
-        # for i in range(0, len(self.graph) - width + 1, step):
-        #     graph_slice = self.graph[i:i + width]
-        #     print("\n".join(graph_slice))
-        #     print()
-        #
-        #     # print to 8x8
-        #     self.show8x8(graph_slice, sec=delay)
         while self.now_layer < self.max_layer:
-            i = now_layer * 2
+            i = self.now_layer * 2
             graph_slice = self.graph[i : i + width]
 
             # print to 8x8
