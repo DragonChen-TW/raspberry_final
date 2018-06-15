@@ -7,6 +7,10 @@ class Register:
         self.SHCP = SHCP
         self.STCP = STCP
 
+        gpio.setmode(gpio.BCM)
+        for g in self.DS + self.SHCP + self.STCP:
+            gpio.setup(g, gpio.OUT)
+
     def makeTick(self, gpio_num):
         gpio.output(gpio_num, gpio.HIGH)
         gpio.output(gpio_num, gpio.LOW)

@@ -11,11 +11,6 @@ class LEDMatrix:
         self.STCP =  [27, 19]
         self.register = Register(self.DS, self.SHCP, self.STCP)
 
-        # gpio setup
-        gpio.setmode(gpio.BCM)
-        for g in self.DS + self.SHCP + self.STCP:
-            gpio.setup(g, gpio.OUT)
-
         self.now_layer = 0
         self.max_layer = num_layer
 
