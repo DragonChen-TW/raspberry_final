@@ -9,7 +9,6 @@ class LEDMatrix:
         self.DS =    [17, 13]
         self.SHCP =  [22, 26]
         self.STCP =  [27, 19]
-        self.register = Register(self.DS, self.SHCP, self.STCP)
 
         self.now_layer = 0
         self.max_layer = num_layer
@@ -40,6 +39,7 @@ class LEDMatrix:
         th.start()
 
     def _startPrint(self, step, width, delay):
+        self.register = Register(self.DS, self.SHCP, self.STCP)
         while self.now_layer < self.max_layer:
             i = self.now_layer * 2
             graph_slice = self.graph[i : i + width]

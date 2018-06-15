@@ -1,4 +1,5 @@
 import RPi.GPIO as gpio
+import time
 from threading import Thread
 
 from matrix import LEDMatrix
