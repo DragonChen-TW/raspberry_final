@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
         # words = "hello"
         # graph = makeWords(words)
-        graph(20)
+        makeGraph(20)
         print(graph)
         # print8x8(graph, delay=0.5)
     finally:
