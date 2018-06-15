@@ -16,8 +16,9 @@ if __name__ == '__main__':
 
         while True:
             if not gpio.input(btn_gpio):
+                time.sleep(0.01)
                 while not gpio.input(btn_gpio):
-                    time.sleep(0.1)
+                    time.sleep(0.01)
 
                 print('press')
                 matrix.now_layer += 1
