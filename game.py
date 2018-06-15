@@ -21,12 +21,14 @@ if __name__ == '__main__':
 
         print('start while')
         while True:
-            print(gpio.input(btn_gpio))
 
             if not gpio.input(btn_gpio):
                 print('press')
                 matrix.now_layer += 1
 
-            time.sleep(2)
+                while not gpio.input(btn_gpio):
+                    break
+
+            time.sleep(0.1)
     finally:
         gpio.cleanup()
