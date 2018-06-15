@@ -79,8 +79,8 @@ if __name__ == '__main__':
 
         # words = "hello"
         # graph = makeWords(words)
-        makeGraph(20)
+        gaphe = makeGraph(20)
         print(graph)
-        # print8x8(graph, delay=0.5)
+        print8x8(graph, delay=0.5)
     finally:
         gpio.cleanup()
