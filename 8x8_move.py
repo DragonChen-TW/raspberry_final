@@ -54,7 +54,7 @@ def print8x8(graph, step=1, width=8, delay=1):
 def makeGraph(num_layer):
     with open('data/layer.json') as json_f:
         data = json.loads(json_f.read())
-    keys = data.keys()
+    keys = list(data.keys())
 
     graph = []
     for i in range(num_layer):
