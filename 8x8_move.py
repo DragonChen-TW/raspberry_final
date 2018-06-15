@@ -1,5 +1,5 @@
 import RPi.GPIO as gpio
-import json, time
+import json, time, random
 
 from register import Register
 
@@ -18,12 +18,11 @@ def setup():
     for g in DS + SHCP + STCP:
         gpio.setup(g, gpio.OUT)
 
-
     # register and init LED
     register = Register(DS, SHCP, STCP)
     register.shift(1, '11111111')
 
-def show8x8(graph, sec=1):
+def show8x8(graph, sec):
     global register
     temp = [
         '11111110',
@@ -43,9 +42,7 @@ def show8x8(graph, sec=1):
             time.sleep(0.001)
             register.shift(1, '11111111')
 
-def print8x8(words, step=1, width=8, delay=1):
-    graph = makeGraph(words)
-
+def print8x8(graph, step=1, width=8, delay=1):
     for i in range(0, len(graph) - width + 1, step):
         graph_slice = graph[i:i + width]
         print("\n".join(graph_slice))
@@ -56,7 +53,17 @@ def print8x8(words, step=1, width=8, delay=1):
 
         # time.sleep(delay)
 
-def makeGraph(words):
+def makeGraph(num_layer):
+    with open('data/layer.json') as json_f:
+        data = json.loads(json_f.read())
+    keys = data.keys()
+
+    graph = []
+    for i in range(num_layer):
+        r_int = random.randint(0, len(keys))
+        graph.append(data[keys[r_int]])
+
+def makeWords(words):
     with open('data/hello.json') as json_f:
         data = json.loads(json_f.read())
 
@@ -70,11 +77,12 @@ if __name__ == '__main__':
     try:
         setup()
 
-        words = "hello"
-        print8x8(words, delay=0.5)
+        gpio.input(12)
 
-        # t = ['11110000'] * 4 + ['00001111'] * 4
-        # print(t)
-        # show8x8(t)
+        # words = "hello"
+        # graph = makeWords(words)
+        graph(20)
+        print(graph)
+        # print8x8(graph, delay=0.5)
     finally:
         gpio.cleanup()
