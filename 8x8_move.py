@@ -81,6 +81,6 @@ if __name__ == '__main__':
     try:
         matrix = LEDMatrix()
 
-        matrix.printOut(delay=0.5)
+        matrix.startPrint(delay=0.5)
     finally:
         gpio.cleanup()
