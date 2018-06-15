@@ -8,10 +8,14 @@ if __name__ == '__main__':
         matrix = LEDMatrix()
 
         th = Thread(matrix.startPrint())
+        print('a')
         th.start()
+        print('b')
 
         # btn
         gpio.setmode(gpio.BCM)
+
+        print('c')
 
         btn_gpio = 21
         gpio.setup(btn_gpio, gpio.IN)
