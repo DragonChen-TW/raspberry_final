@@ -45,7 +45,7 @@ class LEDMatrix:
             print()
 
             # print to 8x8
-            show8x8(graph_slice, sec=delay)
+            self.show8x8(graph_slice, sec=delay)
 
     def makeGraph(self, num_layer):
         with open('data/layer.json') as json_f:
