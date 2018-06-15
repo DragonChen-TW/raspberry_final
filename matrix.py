@@ -54,7 +54,7 @@ class LEDMatrix:
 
         graph = []
         for i in range(num_layer):
-            r_int = random.randint(0, len(keys) - 1)
+            r_int = random.randint(0, 1)
             graph += data[keys[r_int]]
 
         return graph
