@@ -7,10 +7,8 @@ if __name__ == '__main__':
     try:
         matrix = LEDMatrix()
 
-        th = Thread(matrix.startPrint())
+        matrix.startPrint()
         print('a')
-        th.start()
-        print('b')
 
         # btn
         gpio.setmode(gpio.BCM)

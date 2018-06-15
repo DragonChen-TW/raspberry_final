@@ -1,5 +1,6 @@
 import RPi.GPIO as gpio
 import json, time, random
+from threading import Thread
 
 from register import Register
 
@@ -40,6 +41,10 @@ class LEDMatrix:
             self.register.shift(1, '11111111')
 
     def startPrint(self, step=2, width=8, delay=1):
+        th = Thread(target=self._startPrint(self, step, width, delay))
+        th.start()
+
+    def _startPrint(self, step, width, delay):
         while self.now_layer < self.max_layer:
             i = self.now_layer * 2
             graph_slice = self.graph[i : i + width]
