@@ -32,11 +32,11 @@ class LEDMatrix:
         ]
         for _ in range(int(100 * sec)):
             for i in range(8):
-                register.shift(0, graph_s[i])
+                self.register.shift(0, graph_s[i])
 
-                register.shift(1, temp[i])
+                self.register.shift(1, temp[i])
                 time.sleep(0.001)
-                register.shift(1, '11111111')
+                self.register.shift(1, '11111111')
 
     def printOut(self, step=1, width=8, delay=1):
         for i in range(0, len(self.graph) - width + 1, step):
