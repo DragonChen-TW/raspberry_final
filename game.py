@@ -26,7 +26,7 @@ if __name__ == '__main__':
                 matrix.now_layer += 1
 
                 while not gpio.input(btn_gpio):
-                    break
+                    pass
 
             time.sleep(1)
     finally:
