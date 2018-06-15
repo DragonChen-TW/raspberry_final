@@ -29,6 +29,6 @@ if __name__ == '__main__':
                 while not gpio.input(btn_gpio):
                     break
 
-            time.sleep(0.1)
+            time.sleep(1)
     finally:
         gpio.cleanup()
