@@ -1,7 +1,7 @@
 import RPi.GPIO as gpio
 from threading import Thread
 
-from register import Register
+from matrix import LEDMatrix
 
 if __name__ == '__main__':
     matrix = LEDMatrix()
