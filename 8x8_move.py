@@ -16,6 +16,7 @@ class LEDMatrix:
             gpio.setup(g, gpio.OUT)
 
         self.now_layer = 0
+        self.max_layer = num_layer
 
         self.graph = self.makeGraph(num_layer)
 
@@ -30,22 +31,29 @@ class LEDMatrix:
             '10111111',
             '01111111',
         ]
-        for _ in range(int(100 * sec)):
-            for i in range(8):
-                self.register.shift(0, graph_s[i])
+        # for _ in range(int(100 * sec)):
+        for i in range(8):
+            self.register.shift(0, graph_s[i])
 
-                self.register.shift(1, temp[i])
-                time.sleep(0.001)
-                self.register.shift(1, '11111111')
+            self.register.shift(1, temp[i])
+            time.sleep(0.001)
+            self.register.shift(1, '11111111')
 
-    def printOut(self, step=1, width=8, delay=1):
-        for i in range(0, len(self.graph) - width + 1, step):
-            graph_slice = self.graph[i:i + width]
-            print("\n".join(graph_slice))
-            print()
+    def startPrint(self, step=2, width=8, delay=1):
+        # for i in range(0, len(self.graph) - width + 1, step):
+        #     graph_slice = self.graph[i:i + width]
+        #     print("\n".join(graph_slice))
+        #     print()
+        #
+        #     # print to 8x8
+        #     self.show8x8(graph_slice, sec=delay)
+        while self.now_layer < self.max_layer:
+            i = now_layer * 2
+            graph_slice = self.graph[i : i + width]
 
             # print to 8x8
             self.show8x8(graph_slice, sec=delay)
+
 
     def makeGraph(self, num_layer):
         with open('data/layer.json') as json_f:
