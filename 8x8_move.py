@@ -19,7 +19,7 @@ class LEDMatrix:
 
         self.graph = self.makeGraph(num_layer)
 
-    def show8x8(self, sec):
+    def show8x8(self, graph_s, sec):
         temp = [
             '11111110',
             '11111101',
@@ -32,7 +32,7 @@ class LEDMatrix:
         ]
         for _ in range(int(100 * sec)):
             for i in range(8):
-                register.shift(0, self.graph[i])
+                register.shift(0, graph_s[i])
 
                 register.shift(1, temp[i])
                 time.sleep(0.001)
