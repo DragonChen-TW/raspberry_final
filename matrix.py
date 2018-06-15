@@ -13,7 +13,7 @@ class LEDMatrix:
         self.now_layer = 0
         self.max_layer = num_layer
 
-        self.graph = self.makeGraph(num_layer)
+        self.maps, self.graph = self.makeGraph(num_layer)
 
     def show8x8(self, graph_s, sec):
         temp = [
@@ -51,13 +51,19 @@ class LEDMatrix:
         with open('data/layer.json') as json_f:
             data = json.loads(json_f.read())
         keys = list(data.keys())
+        print(keys)
 
+        maps = []
         graph = []
         for i in range(num_layer):
             r_int = random.randint(0, 1)
+            maps.append(keys[r_int])
             graph += data[keys[r_int]]
 
-        return graph
+        # to think
+        graph += ["00000000"] * 8
+
+        return maps, graph
 
 def makeWords(words):
     with open('data/hello.json') as json_f:
