@@ -13,7 +13,7 @@ if __name__ == '__main__':
     gpio.setmode(gpio.BCM)
 
     btn_gpio = 21
-    LED.setup(btn_gpio, 'in')
+    gpio.setup(btn_gpio, gpio.IN)
 
     while True:
         if not gpio.input(btn_gpio):
