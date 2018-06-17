@@ -28,26 +28,26 @@ if __name__ == '__main__':
 
         while True:
             if not gpio.input(btn_gpio_0001):
-                while not gpio.input(btn_gpio_0001):
-                    time.sleep(0.1)
+                #while not gpio.input(btn_gpio_0001):
+                    #time.sleep(0.1)
                 # print('press')
                 print('btn_gpio_0001')
-                comparelayer('0001')
+                #comparelayer('0001')
             elif not gpio.input(btn_gpio_0010):
-                while not gpio.input(btn_gpio_0010):
-                    time.sleep(0.1)
+                #while not gpio.input(btn_gpio_0010):
+                    #time.sleep(0.1)
                 print('btn_gpio_0010')
-                comparelayer('0010')
+                #comparelayer('0010')
             elif not gpio.input(btn_gpio_0100):
-                while not gpio.input(btn_gpio_0100):
-                    time.sleep(0.1)
+                #while not gpio.input(btn_gpio_0100):
+                    #time.sleep(0.1)
                 print('btn_gpio_0100')
-                comparelayer('0100')
+                #comparelayer('0100')
             elif not gpio.input(btn_gpio_1000):
-                while not gpio.input(btn_gpio_1000):
-                    time.sleep(0.1)
+                #while not gpio.input(btn_gpio_1000):
+                    #time.sleep(0.1)
                 print('btn_gpio_1000')
-                comparelayer('1000')
+                #comparelayer('1000')
 
             time.sleep(0.1)
     finally:
