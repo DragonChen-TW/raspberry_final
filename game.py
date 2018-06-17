@@ -44,7 +44,7 @@ if __name__ == '__main__':
                 print('btn_gpio_0100')
                 comparelayer('0100')
             elif not gpio.input(btn_gpio_1000):
-                while not gpio.input((btn_gpio_1000):
+                while not gpio.input(btn_gpio_1000):
                     time.sleep(0.1)
                 print('btn_gpio_1000')
                 comparelayer('1000')
