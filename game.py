@@ -19,7 +19,7 @@ if __name__ == '__main__':
         gpio.setmode(gpio.BCM)
         btn_gpio_0001 = 21
         btn_gpio_0010 = 16
-        btn_gpio_0100 = 7
+        btn_gpio_0100 = 5
         btn_gpio_1000 = 23
         gpio.setup(btn_gpio_0001, gpio.IN)
         gpio.setup(btn_gpio_0010, gpio.IN)
