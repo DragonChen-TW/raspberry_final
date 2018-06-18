@@ -25,6 +25,8 @@ if __name__ == '__main__':
         }
         for key in btn_gpio:
             gpio.setup(btn_gpio[key], gpio.IN)
+        gpio.setup(5, gpio.OUT)
+        gpio.output(5, gpio.HIGH)
 
         while True:
             key = matrix.maps[matrix.now_layer]
