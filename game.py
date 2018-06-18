@@ -33,8 +33,11 @@ if __name__ == '__main__':
             btns = [gpio.input(btn_gpio[k]) for k in btn_gpio]
             print(btns)
             if not gpio.input(btn_gpio[key]):
+                time.sleep(0.1)
+                if [gpio.input(btn_gpio[k]) for k in btn_gpio] != btns:
+                    break
                 while not gpio.input(btn_gpio[key]):
-                    time.sleep(0.1)
+                    time.sleep(0.3)
                 print('press')
                 matrix.now_layer += 1
 
