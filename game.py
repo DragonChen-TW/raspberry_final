@@ -29,6 +29,9 @@ if __name__ == '__main__':
         while True:
             key = matrix.maps[matrix.now_layer]
             if not gpio.input(btn_gpio[key]):
+                time.sleep(0.05)
+                if gpio.input(btn_gpio[key]):
+                    break
                 while not gpio.input(btn_gpio[key]):
                     time.sleep(0.1)
                 print('press')
