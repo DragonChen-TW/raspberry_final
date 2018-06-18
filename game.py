@@ -28,6 +28,8 @@ if __name__ == '__main__':
 
         while True:
             key = matrix.maps[matrix.now_layer]
+            btns = [gpio.input(btn_gpio[k]) for k in btn_gpio]
+            print(btns)
             if not gpio.input(btn_gpio[key]):
                 print(key)
                 time.sleep(0.05)
