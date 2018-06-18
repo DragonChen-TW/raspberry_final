@@ -17,37 +17,22 @@ if __name__ == '__main__':
         matrix.startPrint()
 
         gpio.setmode(gpio.BCM)
-        btn_gpio_0001 = 21
-        btn_gpio_0010 = 20
-        btn_gpio_0100 = 5
-        btn_gpio_1000 = 23
-        gpio.setup(btn_gpio_0001, gpio.IN)
-        gpio.setup(btn_gpio_0010, gpio.IN)
-        gpio.setup(btn_gpio_0100, gpio.IN)
-        gpio.setup(btn_gpio_1000, gpio.IN)
+        btn_gpio = {
+            "0001":12,
+            "0010":16,
+            "0100":20,
+            "1000":21
+        }
+        for key in btn_gpio:
+            gpio.setup(btn_gpio[key], gpio.IN)
 
         while True:
-            if not gpio.input(btn_gpio_0001):
-                while not gpio.input(btn_gpio_0001):
+            key = matrix.maps[matrix.now_layer]
+            if not gpio.input(btn_gpio[key]):
+                while not gpio.input(btn_gpio[key]):
                     time.sleep(0.1)
-                # print('press')
-                print('btn_gpio_0001')
-                #comparelayer('0001')
-            elif not gpio.input(btn_gpio_0010):
-                while not gpio.input(btn_gpio_0010):
-                    time.sleep(0.1)
-                print('btn_gpio_0010')
-                #comparelayer('0010')
-            elif not gpio.input(btn_gpio_0100):
-                while not gpio.input(btn_gpio_0100):
-                    time.sleep(0.1)
-                print('btn_gpio_0100')
-                #comparelayer('0100')
-            elif not gpio.input(btn_gpio_1000):
-                while not gpio.input(btn_gpio_1000):
-                    time.sleep(0.1)
-                print('btn_gpio_1000')
-                #comparelayer('1000')
+                print('press')
+                matrix.now_layer += 1
 
             time.sleep(0.1)
     finally:
