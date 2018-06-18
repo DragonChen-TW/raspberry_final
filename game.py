@@ -40,6 +40,6 @@ if __name__ == '__main__':
                 print('press')
                 matrix.now_layer += 1
 
-            time.sleep(0.1)
+            time.sleep(1)
     finally:
         gpio.cleanup()
