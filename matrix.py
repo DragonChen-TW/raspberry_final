@@ -35,9 +35,9 @@ class LEDMatrix:
             self.register.shift(1, '11111111')
 
     def startPrint(self, step=2, width=8, delay=1):
-        th = Thread(target=self._startPrint, args=(step, width, delay,))
-        th.start()
-        th.join()
+        self.th = Thread(target=self._startPrint, args=(step, width, delay,))
+        self.th.start()
+        # th.join()
 
     def _startPrint(self, step, width, delay):
         self.register = Register(self.DS, self.SHCP, self.STCP)
