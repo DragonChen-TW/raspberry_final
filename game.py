@@ -47,6 +47,8 @@ if __name__ == '__main__':
                 print('press')
                 matrix.now_layer += 1
 
+                now = find_key(matrix.maps[matrix.now_layer])
+
             time.sleep(0.1)
     finally:
         gpio.cleanup()
