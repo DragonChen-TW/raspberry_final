@@ -24,7 +24,9 @@ if __name__ == '__main__':
             "1000":21
         }
         for key in btn_gpio:
-            gpio.setup(btn_gpio[key], gpio.IN)
+            gpio.setup(btn_gpio[key], gpio.IN, pull_up_down=gpio.PUD_UP)
+
+        # ####
         gpio.setup(5, gpio.OUT)
         gpio.output(5, gpio.HIGH)
 
