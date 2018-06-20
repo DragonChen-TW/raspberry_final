@@ -10,6 +10,12 @@ def comparelayer(btn_map):
     if btn_map == matrix.maps[matrix.now_layer]:
         matrix.now_layer += 1
 
+def find_key(name):
+    for i in range(len(btns)):
+        if btns[i]['name'] == name:
+            return i
+    return -1
+
 if __name__ == '__main__':
     try:
         matrix = LEDMatrix(100)
@@ -17,32 +23,30 @@ if __name__ == '__main__':
         matrix.startPrint()
 
         gpio.setmode(gpio.BCM)
-        btn_gpio = {
-            "0001":12,
-            "0010":16,
-            "0100":20,
-            "1000":21
-        }
-        for key in btn_gpio:
-            gpio.setup(btn_gpio[key], gpio.IN, pull_up_down=gpio.PUD_UP)
+        btns = [
+            {'name': '0001', 'gpio':12},
+            {'name': '0010', 'gpio':16},
+            {'name': '0100', 'gpio':20},
+            {'name': '1000', 'gpio':21}
+        ]
+        for i in range(len(btns)):
+            gpio.setup(btns[i]['gpio'], gpio.IN, pull_up_down=gpio.PUD_UP)
 
-        # ####
-        gpio.setup(5, gpio.OUT)
-        gpio.output(5, gpio.HIGH)
+        now = find_key(matrix.maps[matrix.now_layer])
 
         while True:
-            key = matrix.maps[matrix.now_layer]
-            btns = [gpio.input(btn_gpio[k]) for k in btn_gpio]
-            print(key, "btn", btns)
-            if not gpio.input(btn_gpio[key]):
+            # btn_inputs = [gpio.input(b['gpio']) for b in btn_gpio]
+            # print("btns", btn_inputs)
+
+            if not gpio.input(btns[now]['gpio']):
                 time.sleep(0.1)
-                if [gpio.input(btn_gpio[k]) for k in btn_gpio] != btns:
-                    break
-                while not gpio.input(btn_gpio[key]):
-                    time.sleep(0.3)
+
+                while not gpio.input(btns[now]['gpio']):
+                    time.sleep(0.1)
+
                 print('press')
                 matrix.now_layer += 1
 
-            time.sleep(1)
+            time.sleep(0.1)
     finally:
         gpio.cleanup()
