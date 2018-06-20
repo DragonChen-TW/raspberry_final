@@ -35,7 +35,7 @@ if __name__ == '__main__':
         now = find_key(matrix.maps[matrix.now_layer])
 
         while True:
-            btn_inputs = [gpio.input(b['gpio']) for b in btn_gpio]
+            btn_inputs = [gpio.input(b['gpio']) for b in btns]
             print("btns", btn_inputs)
 
             if not gpio.input(btns[now]['gpio']):
