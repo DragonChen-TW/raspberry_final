@@ -46,6 +46,7 @@ if __name__ == '__main__':
                 matrix.now_layer += 1
 
                 layer = get_layer(matrix.maps[matrix.now_layer])
+                print('layer', layer)
 
             time.sleep(0.1)
     finally:
