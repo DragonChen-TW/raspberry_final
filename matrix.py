@@ -91,6 +91,8 @@ if __name__ == '__main__':
     try:
         matrix = LEDMatrix()
 
+        matrix.graph = makeWords('Hello')
+
         matrix.startPrint(delay=0.5)
     finally:
         gpio.cleanup()
