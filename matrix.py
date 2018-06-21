@@ -91,7 +91,7 @@ if __name__ == '__main__':
     try:
         matrix = LEDMatrix()
 
-        matrix.graph = makeWords('Hello')
+        matrix.graph = makeWords('hello')
 
         matrix.startPrint(delay=0.5)
     finally:
