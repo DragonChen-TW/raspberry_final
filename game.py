@@ -20,10 +20,10 @@ if __name__ == '__main__':
 
         gpio.setmode(gpio.BCM)
         btns = [
-            {'name': '0001', 'gpio':21},
-            {'name': '0010', 'gpio':20},
-            {'name': '0100', 'gpio':16},
-            {'name': '1000', 'gpio':12}
+            {'name': '0001', 'gpio':12},
+            {'name': '0010', 'gpio':16},
+            {'name': '0100', 'gpio':20},
+            {'name': '1000', 'gpio':21}
         ]
         for i in range(len(btns)):
             gpio.setup(btns[i]['gpio'], gpio.IN, pull_up_down=gpio.PUD_UP)
