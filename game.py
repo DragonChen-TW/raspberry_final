@@ -5,16 +5,13 @@ from threading import Thread
 from matrix import LEDMatrix
 
 
-def comparelayer(btn_map):
-    #print(matrix.maps[matrix.now_layer])
-    if btn_map == matrix.maps[matrix.now_layer]:
-        matrix.now_layer += 1
+def compare_layer(layer, btn_inputs):
 
-def find_key(name):
-    for i in range(len(btns)):
-        if btns[i]['name'] == name:
-            return i
-    return -1
+
+def get_layer(name):
+    name = list(name)
+    name = [int(n) for n in name]
+    return name
 
 if __name__ == '__main__':
     try:
@@ -32,7 +29,8 @@ if __name__ == '__main__':
         for i in range(len(btns)):
             gpio.setup(btns[i]['gpio'], gpio.IN, pull_up_down=gpio.PUD_UP)
 
-        now = find_key(matrix.maps[matrix.now_layer])
+        layer = get_layer(matrix.maps[matrix.now_layer])
+        print(layer)
 
         while True:
             btn_inputs = [gpio.input(b['gpio']) for b in btns]
