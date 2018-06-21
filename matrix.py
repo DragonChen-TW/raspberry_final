@@ -59,13 +59,13 @@ class LEDMatrix:
         for i in range(num_layer):
             r_int = random.randint(1, 10)
             if r_int <= 6:
-                keys = list(data['one_layer'].keys)
+                keys = list(data['one_layer'].keys())
                 r_int = random.randint(0, len(keys) - 1)
 
                 maps.append(keys[r_int])
                 graph += data['one_layer'][keys[r_int]]
             else:
-                keys = list(data['two_layer'].keys)
+                keys = list(data['two_layer'].keys())
                 r_int = random.randint(0, len(keys) - 1)
 
                 maps.append(keys[r_int])
