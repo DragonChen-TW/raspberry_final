@@ -14,7 +14,7 @@ def get_layer(name):
 
 if __name__ == '__main__':
     try:
-        matrix = LEDMatrix(100)
+        matrix = LEDMatrix(10)
 
         matrix.startPrint()
 
