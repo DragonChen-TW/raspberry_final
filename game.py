@@ -9,7 +9,6 @@ def compare_layer(layer, btn_inputs):
     pass
 
 def get_layer(name):
-    name = list(name)
     name = [int(n) for n in name]
     return name
 
@@ -36,16 +35,16 @@ if __name__ == '__main__':
             btn_inputs = [gpio.input(b['gpio']) for b in btns]
             print("btns", btn_inputs)
 
-            # if not gpio.input(btns[now]['gpio']):
-            #     time.sleep(0.1)
-            #
-            #     while not gpio.input(btns[now]['gpio']):
-            #         time.sleep(0.1)
-            #
-            #     print('press')
-            #     matrix.now_layer += 1
-            #
-            #     layer = get_layer(matrix.maps[matrix.now_layer])
+            if layer == btn_inputs:
+                time.sleep(0.1)
+
+                while layer == btn_inputs:
+                    time.sleep(0.1)
+
+                print('press')
+                matrix.now_layer += 1
+
+                layer = get_layer(matrix.maps[matrix.now_layer])
 
             time.sleep(0.1)
     finally:
