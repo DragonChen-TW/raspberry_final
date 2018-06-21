@@ -58,7 +58,7 @@ class LEDMatrix:
         graph = []
         for i in range(num_layer):
             r_int = random.randint(1, 10)
-            if r_int <= 6:
+            if r_int <= 7:
                 keys = list(data['one_layer'].keys())
                 r_int = random.randint(0, len(keys) - 1)
 
@@ -94,5 +94,7 @@ if __name__ == '__main__':
         matrix.graph = makeWords('hello')
 
         matrix.startPrint(delay=0.5)
+
+        time.sleep(100)
     finally:
         gpio.cleanup()
