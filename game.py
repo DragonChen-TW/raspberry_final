@@ -40,6 +40,7 @@ if __name__ == '__main__':
 
                 while layer == btn_inputs:
                     time.sleep(0.1)
+                    btn_inputs = [gpio.input(b['gpio']) for b in btns]
 
                 print('press')
                 matrix.now_layer += 1
