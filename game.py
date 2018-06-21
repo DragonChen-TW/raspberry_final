@@ -9,7 +9,7 @@ def compare_layer(layer, btn_inputs):
     pass
 
 def get_layer(name):
-    name = [int(n) for n in name]
+    name = [not int(n) for n in name]
     return name
 
 if __name__ == '__main__':
