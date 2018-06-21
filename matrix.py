@@ -51,15 +51,26 @@ class LEDMatrix:
     def makeGraph(self, num_layer):
         with open('data/layer.json') as json_f:
             data = json.loads(json_f.read())
-        keys = list(data.keys())
-        print(keys)
+        # keys = list(data['one_layer'].keys()) + list(data['two_layer'].keys())
+        # print(keys)
 
         maps = []
         graph = []
         for i in range(num_layer):
-            r_int = random.randint(0, len(keys) - 1)
-            maps.append(keys[r_int])
-            graph += data[keys[r_int]]
+            r_int = random.randint(1, 10)
+            if r_int <= 6:
+                keys = list(data['one_layer'].keys)
+                r_int = random.randint(0, len(keys) - 1)
+
+                maps.append(keys[r_int])
+                graph += data['one_layer'][keys[r_int]]
+            else:
+                keys = list(data['two_layer'].keys)
+                r_int = random.randint(0, len(keys) - 1)
+
+                maps.append(keys[r_int])
+                graph += data['two_layer'][keys[r_int]]
+
 
         # to think
         graph += ["00000000"] * 8
