@@ -137,4 +137,4 @@ for i in range(0, 9999):
 
 displayOff()
 
-print "Good by!"
+# print "Good by!"
