@@ -30,7 +30,7 @@ GPIO.setup(dataBit, GPIO.OUT) # P7
 
 
 # Setup IO
-GPIO.output(11, 0)
+GPIO.output(LATCH, 0)
 GPIO.output(CLK, 0)
 
 
