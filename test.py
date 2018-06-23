@@ -17,9 +17,11 @@
 import RPi.GPIO as GPIO
 import time
 
-LATCH = 11 # CS
-CLK = 12
-dataBit = 7 # DIN
+GPIO.setup(GPIO.BCM)
+
+LATCH = 27 # CS
+CLK = 22
+dataBit = 17 # DIN
 
 
 GPIO.setup(LATCH, GPIO.OUT) # P0
