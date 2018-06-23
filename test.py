@@ -138,4 +138,6 @@ for i in range(0, 9999):
 
 displayOff()
 
+GPIO.cleanup()
+
 # print "Good by!"
