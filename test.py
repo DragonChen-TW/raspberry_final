@@ -51,6 +51,7 @@ def pulseCS():
 # shift byte into MAX7219
 # MSB out first!
 def ssrOut(value):
+    value = int(value)
     for  x in range(0,8):
         temp = value & 0x80
         if temp == 0x80:
