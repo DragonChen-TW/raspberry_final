@@ -18,23 +18,10 @@ class LEDMatrix:
         self.maps, self.graph = self.makeGraph(num_layer)
 
     def show8x8(self, graph_s, sec):
-        temp = [
-            '01111111',
-            '10111111',
-            '11011111',
-            '11101111',
-            '11110111',
-            '11111011',
-            '11111101',
-            '11111110',
-        ]
-        # for _ in range(int(100 * sec)):
         for i in range(8):
-            self.register.shift(0, graph_s[i])
-
-            self.register.shift(1, temp[i])
+            self.register.shift(0, temp[i])
             time.sleep(0.001)
-            self.register.shift(1, '11111111')
+            # self.register.shift(0, '11111111')
 
     def startPrint(self, step=2, width=8, delay=1):
         self.th = Thread(target=self._startPrint, args=(step, width, delay,))
