@@ -28,15 +28,7 @@ if __name__ == '__main__':
         SHCP =  [22, 26]
         STCP =  [27, 19]
 
-        gpio.setmode(gpio.BCM)
-        for g in DS + SHCP + STCP:
-            gpio.setup(g, gpio.OUT)
-
         register = Register(DS, SHCP, STCP)
-
-        # register.shift(1, '00000000')
-        # time.sleep(10)
-
 
         register.shift(0, '11111111')
 

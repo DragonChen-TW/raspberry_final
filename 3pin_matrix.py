@@ -19,8 +19,9 @@ class LEDMatrix:
 
     def show8x8(self, graph_s, sec):
         for i in range(8):
+            print(graph_s[i])
             self.register.shift(0, graph_s[i])
-            time.sleep(0.001)
+            time.sleep(1)
 
     def startPrint(self, step=2, width=8, delay=1):
         self.th = Thread(target=self._startPrint, args=(step, width, delay,))
