@@ -133,6 +133,7 @@ for i in range(0, 9999):
     for k in range(1, 4):
         digit = j % 10
         writeMAX7219(digit, k)
+        time.sleep(1)
         j = j / 10
 
 
