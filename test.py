@@ -130,9 +130,9 @@ for i in range(0, 9999):
     j = i
     # get 1st digit j
     for k in range(1, 4):
-		digit = j % 10
-		writeMAX7219(digit, k)
-		j = j / 10
+        digit = j % 10
+        writeMAX7219(digit, k)
+        j = j / 10
 
 
 displayOff()
