@@ -17,7 +17,7 @@
 import RPi.GPIO as GPIO
 import time
 
-GPIO.setup(GPIO.BCM)
+GPIO.setmode(GPIO.BCM)
 
 LATCH = 27 # CS
 CLK = 22
