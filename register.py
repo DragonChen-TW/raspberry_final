@@ -15,7 +15,10 @@ class Register:
         gpio.output(gpio_num, gpio.LOW)
 
     def shift(self, i, shift_data):
-        for d in shift_data:
-            gpio.output(self.DS[i], int(d))
-            self.makeTick(self.SHCP[i])
-        self.makeTick(self.STCP[i])
+        try:
+            for d in shift_data:
+                gpio.output(self.DS[i], int(d))
+                self.makeTick(self.SHCP[i])
+            self.makeTick(self.STCP[i])
+        finally:
+            gpio.cleanup()
