@@ -8,11 +8,13 @@ if __name__ == '__main__':
         gpio.setmode(21,gpio.IN, pull_up_down=gpio.PUD_UP)
 
         while True:
-            if not gpio.input(12):
-                print('press')
-                LED.turnON(21)
+            if not gpio.input(20):
+                print('press 20 ')
+            elif not gpio.input(21):
+                print('press 21 ')
             else:
-                LED.turnOFF(21)
+                print("no press")
+                
 
             time.sleep(0.5)
     finally:
