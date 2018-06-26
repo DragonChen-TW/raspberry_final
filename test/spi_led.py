@@ -10,7 +10,7 @@ if __name__ == '__main__':
 
     ### Set the scan limit register and disable shutdown mode
     register.put(int("101100000111",2),12)
-    register.put(int("110000000001",2),12
+    register.put(int("110000000001",2),12)
 
     register.put(int('010011100111', 2), 12)
 
