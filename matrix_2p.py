@@ -39,7 +39,6 @@ class LEDMatrix:
         address = ['0001', '0010', '0011', '0100', '0101', '0110', '0111', '1000']
         for i in range(8):
             self.register.shift(0, address[i] + graph_s[i])
-            time.sleep(1)
 
     def startPrint(self, step=2, width=8, delay=1):
         self.th = Thread(target=self._startPrint, args=(step, width, delay,))
