@@ -49,8 +49,8 @@ class LEDMatrix:
     def _startPrint(self, step, width, delay):
         self.register = Register(self.DS, self.SHCP, self.STCP)
         # setting disable shutdown and sacan limit
-        self.register.shift('101100000111')
-        self.register.shift('110000000001')
+        self.register.shift(0, '101100000111')
+        self.register.shift(0, '110000000001')
         while self.now_layer < self.max_layer:
             i = self.now_layer * 2
             graph_slice = self.graph[i : i + width]
