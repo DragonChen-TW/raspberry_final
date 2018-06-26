@@ -2,27 +2,25 @@ import RPi.GPIO as gpio
 import json, time, random
 from threading import Thread
 
-# import spi
+class Register:
+    def __init__(self, DS, SHCP, STCP):
+        self.DS = DS
+        self.SHCP = SHCP
+        self.STCP = STCP
 
-# class Register:
-#     def __init__(self, DS, SHCP, STCP):
-#         self.DS = DS
-#         self.SHCP = SHCP
-#         self.STCP = STCP
-#
-#         gpio.setmode(gpio.BCM)
-#         for g in self.DS + self.SHCP + self.STCP:
-#             gpio.setup(g, gpio.OUT)
-#
-#     def makeTick(self, gpio_num):
-#         gpio.output(gpio_num, gpio.HIGH)
-#         gpio.output(gpio_num, gpio.LOW)
-#
-#     def shift(self, i, shift_data):
-#         for d in shift_data:
-#             gpio.output(self.DS[i], int(d))
-#             self.makeTick(self.SHCP[i])
-#         self.makeTick(self.STCP[i])
+        gpio.setmode(gpio.BCM)
+        for g in self.DS + self.SHCP + self.STCP:
+            gpio.setup(g, gpio.OUT)
+
+    def makeTick(self, gpio_num):
+        gpio.output(gpio_num, gpio.HIGH)
+        gpio.output(gpio_num, gpio.LOW)
+
+    def shift(self, i, shift_data):
+        for d in shift_data:
+            gpio.output(self.DS[i], int(d))
+            self.makeTick(self.SHCP[i])
+        self.makeTick(self.STCP[i])
 
 class LEDMatrix:
     def __init__(self, num_layer=20):
@@ -38,10 +36,9 @@ class LEDMatrix:
         self.maps, self.graph = self.makeGraph(num_layer)
 
     def show8x8(self, graph_s, sec):
+        address = ['0001', '0010', '0011', '0100', '0101', '0110', '0111', '1000']
         for i in range(8):
-            print(graph_s[i])
-            self.register.shift(0, '{:08}'.format(i))
-            self.register.shift(0, graph_s[i])
+            self.register.shift(0, address + graph_s[i])
             time.sleep(1)
 
     def startPrint(self, step=2, width=8, delay=1):
@@ -51,6 +48,9 @@ class LEDMatrix:
 
     def _startPrint(self, step, width, delay):
         self.register = Register(self.DS, self.SHCP, self.STCP)
+        # setting disable shutdown and sacan limit
+        self.register.shift('101100000111')
+        self.register.shift('110000000001')
         while self.now_layer < self.max_layer:
             i = self.now_layer * 2
             graph_slice = self.graph[i : i + width]
