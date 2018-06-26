@@ -1,5 +1,6 @@
-import spi
+import time
 
+import spi
 
 if __name__ == '__main__':
     register = spi.SPI(clk=22, cs=27, mosi=17, miso=None, verbose=True)
