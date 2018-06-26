@@ -1,3 +1,5 @@
+import RPi.GPIO as gpio
+
 class Register:
     def __init__(self, DS, SHCP, STCP):
         self.DS = DS
