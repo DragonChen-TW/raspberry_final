@@ -38,15 +38,12 @@ class LEDMatrix:
         self.register.shift(0, '101100000111')
         self.register.shift(0, '110000000001')
 
-        try:
-            while self.now_layer < self.max_layer:
-                i = self.now_layer * 2
-                graph_slice = self.graph[i : i + width]
+        while self.now_layer < self.max_layer:
+            i = self.now_layer * 2
+            graph_slice = self.graph[i : i + width]
 
-                # print to 8x8
-                self.show8x8(graph_slice, sec=delay)
-        finally:
-            self.cleanUp()
+            # print to 8x8
+            self.show8x8(graph_slice, sec=delay)
 
     def makeGraph(self, num_layer):
         with open('data/layer.json') as json_f:
