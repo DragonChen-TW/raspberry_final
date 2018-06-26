@@ -12,8 +12,8 @@ def get_layer(name):
 
 if __name__ == '__main__':
     try:
-        player = input('Please choose player1 or player2')
-        
+        player = input('Please choose player1 or player2: ')
+
         if player == '1':
             from matrix import LEDMatrix
         else:
