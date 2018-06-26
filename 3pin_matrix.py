@@ -17,7 +17,6 @@ class Register:
         gpio.output(gpio_num, gpio.LOW)
 
     def shift(self, i, shift_data):
-        gpio.setmode(gpio.BCM)
         for d in shift_data:
             gpio.output(self.DS[i], int(d))
             self.makeTick(self.SHCP[i])
@@ -39,6 +38,7 @@ class LEDMatrix:
     def show8x8(self, graph_s, sec):
         for i in range(8):
             print(graph_s[i])
+            self.register.shift(0, i)
             self.register.shift(0, graph_s[i])
             time.sleep(1)
 
