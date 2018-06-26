@@ -4,8 +4,8 @@ import time, LED
 if __name__ == '__main__':
     try:
         gpio.setmode(gpio.BCM)
-        LED.setup(12, 'in')
-        LED.setup(21, 'out')
+        gpio.setmode(20,gpio.IN, pull_up_down=gpio.PUD_UP)
+        gpio.setmode(21,gpio.IN, pull_up_down=gpio.PUD_UP)
 
         while True:
             if not gpio.input(12):
