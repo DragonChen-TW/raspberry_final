@@ -2,8 +2,6 @@ import RPi.GPIO as gpio
 import time
 from threading import Thread
 
-from matrix_2p import LEDMatrix
-
 
 def compare_layer(layer, btn_inputs):
     pass
@@ -14,6 +12,14 @@ def get_layer(name):
 
 if __name__ == '__main__':
     try:
+        player = input('Please choose player1 or player2')
+        
+        if player == '1':
+            from matrix import LEDMatrix
+        else:
+            from matrix_2p import LEDMatrix
+
+
         matrix = LEDMatrix(20)
 
         matrix.startPrint()
