@@ -26,7 +26,8 @@ if __name__ == '__main__':
     ]
 
     for i in range(8):
-        register.put((i + 1) << 8 + int(heart[i], 2), 12)
+        loc = (i + 1) << 8
+        register.put(loc + int(heart[i], 2), 12)
 
 
     input("Press any key to shut down.")
