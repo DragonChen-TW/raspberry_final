@@ -26,9 +26,9 @@ class LEDMatrix:
     def __init__(self, num_layer=20):
         # DS, SHCP, STCP
         # CLK, CS, DIN
-        self.DS =    [22]
-        self.SHCP =  [27]
-        self.STCP =  [17]
+        self.DS =    [17]
+        self.SHCP =  [22]
+        self.STCP =  [27]
 
         self.now_layer = 0
         self.max_layer = num_layer
