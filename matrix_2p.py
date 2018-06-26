@@ -19,7 +19,7 @@ class LEDMatrix:
 
     def cleanUp(self):
         address = ['0001', '0010', '0011', '0100', '0101', '0110', '0111', '1000', '1001', '1010', '1011', '1100', '1101', '1110', '1111']
-        zero = ['00000000']
+        zero = '00000000'
         for i in range(8):
             self.register.shift(0, address[i] + zero)
         # self.register.shift(0, '110000000000')
