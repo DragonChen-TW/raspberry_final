@@ -37,7 +37,6 @@ class LEDMatrix:
         self.register.shift(0, '101100000111')
         self.register.shift(0, '110000000001')
         while self.now_layer < self.max_layer:
-            print(self.now_layer)
             i = self.now_layer * 2
             graph_slice = self.graph[i : i + width]
 
