@@ -4,15 +4,17 @@ import time, LED
 if __name__ == '__main__':
     try:
         gpio.setmode(gpio.BCM)
-        LED.setup(12, 'in')
-        LED.setup(21, 'out')
+        gpio.setmode(20,gpio.IN, pull_up_down=gpio.PUD_UP)
+        gpio.setmode(21,gpio.IN, pull_up_down=gpio.PUD_UP)
 
         while True:
-            if not gpio.input(12):
-                print('press')
-                LED.turnON(21)
+            if not gpio.input(20):
+                print('press 20 ')
+            elif not gpio.input(21):
+                print('press 21 ')
             else:
-                LED.turnOFF(21)
+                print("no press")
+                
 
             time.sleep(0.5)
     finally:
