@@ -15,10 +15,6 @@ class LEDMatrix:
 
         self.maps, self.graph = self.makeGraph(num_layer)
 
-    def cleanUp(self):
-        zeros = ['00000000'] * 8
-        self.show8x8(zeros)
-
     def show8x8(self, graph_s, sec):
         temp = [
             '01111111',
@@ -101,5 +97,4 @@ if __name__ == '__main__':
 
         time.sleep(100)
     finally:
-        matrix.cleanUp()
         gpio.cleanup()
