@@ -2,7 +2,7 @@ import RPi.GPIO as gpio
 import json, time, random
 from threading import Thread
 
-import spi
+# import spi
 
 # class Register:
 #     def __init__(self, DS, SHCP, STCP):
