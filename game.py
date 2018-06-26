@@ -35,9 +35,8 @@ if __name__ == '__main__':
             btn_inputs = [gpio.input(b['gpio']) for b in btns]
             print("btns", btn_inputs)
 
+            # btn map == now_layer map
             if layer == btn_inputs:
-                time.sleep(0.1)
-
                 while layer == btn_inputs:
                     time.sleep(0.1)
                     btn_inputs = [gpio.input(b['gpio']) for b in btns]
