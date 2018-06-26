@@ -38,7 +38,7 @@ class LEDMatrix:
     def show8x8(self, graph_s, sec):
         for i in range(8):
             print(graph_s[i])
-            self.register.shift(0, i)
+            self.register.shift(0, '{:08}'.format(i))
             self.register.shift(0, graph_s[i])
             time.sleep(1)
 
