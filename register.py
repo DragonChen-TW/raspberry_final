@@ -20,5 +20,5 @@ class Register:
                 gpio.output(self.DS[i], int(d))
                 self.makeTick(self.SHCP[i])
             self.makeTick(self.STCP[i])
-        finally:
+        except:
             gpio.cleanup()
