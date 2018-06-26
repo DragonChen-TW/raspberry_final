@@ -49,5 +49,5 @@ if __name__ == '__main__':
 
             time.sleep(0.1)
     finally:
-        self.register.cleanup()
+        matrix.cleanup()
         gpio.cleanup()
