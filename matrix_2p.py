@@ -18,8 +18,9 @@ class LEDMatrix:
         self.maps, self.graph = self.makeGraph(num_layer)
 
     def cleanUp(self):
-        zeros = ['00000000'] * 8
-        self.show8x8(zeros)
+        # address = ['0001', '0010', '0011', '0100', '0101', '0110', '0111', '1000', '1001', '1010', '1011', '1100', '1101', '1110', '1111']
+        # zero = ['00000000']
+        self.register.shift('110000000000')
 
     def show8x8(self, graph_s, sec):
         address = ['0001', '0010', '0011', '0100', '0101', '0110', '0111', '1000']
@@ -36,12 +37,16 @@ class LEDMatrix:
         # setting disable shutdown and sacan limit
         self.register.shift(0, '101100000111')
         self.register.shift(0, '110000000001')
-        while self.now_layer < self.max_layer:
-            i = self.now_layer * 2
-            graph_slice = self.graph[i : i + width]
 
-            # print to 8x8
-            self.show8x8(graph_slice, sec=delay)
+        try:
+            while self.now_layer < self.max_layer:
+                i = self.now_layer * 2
+                graph_slice = self.graph[i : i + width]
+
+                # print to 8x8
+                self.show8x8(graph_slice, sec=delay)
+        finally:
+            self.cleanUp()
 
     def makeGraph(self, num_layer):
         with open('data/layer.json') as json_f:
