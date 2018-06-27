@@ -17,3 +17,5 @@ def client():
 
 if __name__ == '__main__':
     client()
+
+# pip3/pip install pybluez
