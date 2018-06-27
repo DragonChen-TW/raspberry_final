@@ -5,7 +5,7 @@ from threading import Thread
 from register import Register
 
 class LEDMatrix:
-    def __init__(self, num_layer=20):
+    def __init__(self, num_layer=20, online=False):
         self.DS =    [17, 13]
         self.SHCP =  [22, 26]
         self.STCP =  [27, 19]
@@ -51,8 +51,6 @@ class LEDMatrix:
     def makeGraph(self, num_layer):
         with open('data/layer.json') as json_f:
             data = json.loads(json_f.read())
-        # keys = list(data['one_layer'].keys()) + list(data['two_layer'].keys())
-        # print(keys)
 
         maps = []
         graph = []
