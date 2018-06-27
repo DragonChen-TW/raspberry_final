@@ -55,6 +55,9 @@ if __name__ == '__main__':
 
                 print('press')
                 matrix.now_layer += 1
+                if online:
+                    th2 = Thread(target=matrix.reqNext)
+                    th2.start()
 
                 layer = get_layer(matrix.maps[matrix.now_layer])
                 print('layer', layer)

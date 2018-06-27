@@ -8,6 +8,7 @@ class Matrix:
     def __init__(self, num_layer=20, online=False, game_id=None, p_name=None):
         self.now_layer = 0
         self.max_layer = num_layer
+        self.player = ""
 
         if online:
             self.game_id = game_id
@@ -25,6 +26,9 @@ class Matrix:
             self.show8x8(graph_slice)
 
     def getGraph(self, game_id, p_name):
+        url = 'http://140.117.71.66:8000/game/update/?game_id={}&player=reset'.format(game_id)
+        requests.get(url)
+
         url = 'http://140.117.71.66:8000/game/graph/?id={}'.format(self.game_id)
 
         res = requests.get(url)
@@ -57,6 +61,10 @@ class Matrix:
 
         return maps, graph
 
+    def reqNext(self):
+        url = 'http://140.117.71.66:8000/game/update/?game_id={}&player={}'.format(self.game_id, self.player)
+        res = requests.get(url)
+
     def makeWords(words):
         with open('data/hello.json') as json_f:
             data = json.loads(json_f.read())
@@ -72,6 +80,8 @@ class LEDMatrix_p1(Matrix):
         self.DS =    [17, 13]
         self.SHCP =  [22, 26]
         self.STCP =  [27, 19]
+
+        self.player = 'p1'
 
         super().__init__(*args, **kwargs)
 
@@ -103,6 +113,8 @@ class LEDMatrix_p2(Matrix):
         self.DS =    [17]
         self.SHCP =  [22]
         self.STCP =  [27]
+
+        self.player = 'p2'
 
         super().__init__(*args, **kwargs)
 
