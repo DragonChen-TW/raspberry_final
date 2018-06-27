@@ -6,12 +6,12 @@ from register import Register
 from matrix_p2 import Matrix
 
 class LEDMatrix_p1(Matrix):
-    def __init__(self, **kwargs):
+    def __init__(self, *args, **kwargs):
         self.DS =    [17, 13]
         self.SHCP =  [22, 26]
         self.STCP =  [27, 19]
 
-        super().__init__(**kwargs)
+        super().__init__(*args, **kwargs)
 
     def show8x8(self, graph_s):
         temp = [
@@ -37,12 +37,12 @@ class LEDMatrix_p1(Matrix):
         self.printLoop()
 
 class LEDMatrix_p2(Matrix):
-    def __init__(self, **kwargs):
+    def __init__(self, *args, **kwargs):
         self.DS =    [17]
         self.SHCP =  [22]
         self.STCP =  [27]
 
-        super().__init__(**kwargs)
+        super().__init__(*args, **kwargs)
 
     def show8x8(self, graph_s):
         # address = ['0001', '0010', '0011', '0100', '0101', '0110', '0111', '1000']
