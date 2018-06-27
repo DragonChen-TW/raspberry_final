@@ -8,7 +8,6 @@ class Matrix:
     def __init__(self, num_layer=20, online=False, game_id=None, p_name=None):
         self.now_layer = 0
         self.max_layer = num_layer
-        self.player = ""
 
         if online:
             self.game_id = game_id
