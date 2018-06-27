@@ -26,7 +26,7 @@ class Matrix:
     def getGraph(self, game_id):
         print('http://140.117.71.66:8000/game/graph/?id='.format(game_id))
         res = requests.get('http://140.117.71.66:8000/game/graph/?id='.format(game_id))
-        print(res.text)
+        # print(res.text)
         res = json.loads(res.text)
 
         return res['maps'], res['graph']
