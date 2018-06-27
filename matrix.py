@@ -6,33 +6,12 @@ from register import Register
 
 class Matrix:
     def __init__(self, num_layer=20, online=False):
-        self.DS =    [17, 13]
-        self.SHCP =  [22, 26]
-        self.STCP =  [27, 19]
-
         self.now_layer = 0
         self.max_layer = num_layer
 
         self.maps, self.graph = self.makeGraph(num_layer)
 
-    def show8x8(self, graph_s, sec):
-        temp = [
-            '11111110',
-            '11111101',
-            '11111011',
-            '11110111',
-            '11101111',
-            '11011111',
-            '10111111',
-            '01111111',
-        ]
-        # for _ in range(int(100 * sec)):
-        for i in range(8):
-            self.register.shift(0, graph_s[i][::-1])
 
-            self.register.shift(1, temp[i])
-            time.sleep(0.001)
-            self.register.shift(1, '11111111')
 
     def startPrint(self, step=2, width=8, delay=1):
         self.th = Thread(target=self._startPrint, args=(step, width, delay,))
