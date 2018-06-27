@@ -12,7 +12,7 @@ if __name__ == '__main__':
     try:
         player = input('Please choose player1 or player2: ')
         online = input('If enter a online game room?(y/n): ')
-        if online = 'y':
+        if online == 'y':
             game_id = int(input('Then, please input game room\'s id: '))
 
             online = True
