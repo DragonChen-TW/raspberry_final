@@ -17,7 +17,7 @@ class Matrix:
 
         self.maps, self.graph = self.makeGraph(num_layer)
 
-    def startPrint(self, step=2, width=8, delay=1):
+    def startPrint(self):
         self.th = Thread(target=self._startPrint)
         self.th.start()
         # th.join()
@@ -29,6 +29,7 @@ class Matrix:
         # self.register.shift(0, '110000000001')
 
         while self.now_layer < self.max_layer:
+            print(i)
             i = self.now_layer * 2
             graph_slice = self.graph[i : i + width]
 

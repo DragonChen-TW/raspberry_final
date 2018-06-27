@@ -60,7 +60,7 @@ if __name__ == '__main__':
 
         while True:
             btn_inputs = [gpio.input(b['gpio']) for b in btns]
-            print("btns", btn_inputs)
+            # print("btns", btn_inputs)
 
             # btn map == now_layer map
             if layer == btn_inputs:
