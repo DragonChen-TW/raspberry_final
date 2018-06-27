@@ -43,7 +43,8 @@ if __name__ == '__main__':
         else:
             matrix = LEDMatrix_p2(50)
 
-        matrix.startPrint()
+        th = Thread(target=matrix._startPrint)
+        th.start()
 
         gpio.setmode(gpio.BCM)
         btns = [

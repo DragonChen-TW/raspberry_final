@@ -17,11 +17,6 @@ class Matrix:
 
         self.maps, self.graph = self.makeGraph(num_layer)
 
-    def startPrint(self):
-        self.th = Thread(target=self._startPrint)
-        self.th.start()
-        # th.join()
-
     def _startPrint(self):
         # self.register = Register(self.DS, self.SHCP, self.STCP)
         # # setting disable shutdown and sacan limit
