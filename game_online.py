@@ -64,7 +64,7 @@ if __name__ == '__main__':
 
             time.sleep(0.1)
     finally:
-        matrix.show8x8([
+        final_graph = [
             '10001000',
             '10101000',
             '01010000',
@@ -73,5 +73,6 @@ if __name__ == '__main__':
             '00111101',
             '00000111',
             '00000101'
-        ])
+        ]
+        matrix.show8x8(final_graph[::-1])
         gpio.cleanup()
