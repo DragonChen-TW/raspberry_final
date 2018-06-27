@@ -22,7 +22,7 @@ class LEDMatrix_p2(Matrix):
         for i in range(8):
             self.register.shift(0, address[i] + graph_s[i])
 
-    def _startPrint(self):
+    def startPrint(self):
         self.register = Register(self.DS, self.SHCP, self.STCP)
         # setting disable shutdown and sacan limit
         self.register.shift(0, '101100000111')
@@ -43,7 +43,7 @@ if __name__ == '__main__':
         else:
             matrix = LEDMatrix_p2(50)
 
-        th = Thread(target=matrix._startPrint)
+        th = Thread(target=matrix.startPrint)
         th.start()
 
         gpio.setmode(gpio.BCM)
