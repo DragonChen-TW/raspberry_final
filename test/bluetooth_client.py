@@ -4,7 +4,7 @@ def client():
     port = 3
     client_socket = bt.BluetoothSocket(bt.RFCOMM)
 
-    client_socket.connect(('B8:27:EB:C2:41:0D', port))
+    client_socket.connect(('AC:BC:32:B0:C6:E4', port))
 
     try:
         while True:
