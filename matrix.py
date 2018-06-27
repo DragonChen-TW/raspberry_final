@@ -1,15 +1,18 @@
 import RPi.GPIO as gpio
-import json, time, random
+import json, time, random, requests
 from threading import Thread
 
 from register import Register
 
 class Matrix:
-    def __init__(self, num_layer=20, online=False):
+    def __init__(self, num_layer=20, online=False, game_id=None):
         self.now_layer = 0
         self.max_layer = num_layer
 
-        self.maps, self.graph = self.makeGraph(num_layer)
+        if online:
+            self.maps, self.graph = self.getGraph(self.game_id)
+        else:
+            self.maps, self.graph = self.makeGraph(num_layer)
 
     def printLoop(self):
         while self.now_layer < self.max_layer:
@@ -19,6 +22,12 @@ class Matrix:
 
             # print to 8x8
             self.show8x8(graph_slice)
+
+    def getGraph(self, game_id):
+        res = requests.get('http://140.117.71.66:8000/game/graph/?id='.format(game_id))
+        res = json.loads(res.text)
+
+        return res['maps'], res['graph']
 
     def makeGraph(self, num_layer):
         with open('data/layer.json') as json_f:

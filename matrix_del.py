@@ -11,8 +11,6 @@ class Matrix:
 
         self.maps, self.graph = self.makeGraph(num_layer)
 
-
-
     def startPrint(self, step=2, width=8, delay=1):
         self.th = Thread(target=self._startPrint, args=(step, width, delay,))
         self.th.start()

@@ -2,32 +2,7 @@ import RPi.GPIO as gpio
 import time
 from threading import Thread
 
-from matrix_p2 import Matrix
-
-class LEDMatrix_p1(Matrix):
-    pass
-
-class LEDMatrix_p2(Matrix):
-    def __init__(self, num_layer=20, online=False):
-        self.DS =    [17]
-        self.SHCP =  [22]
-        self.STCP =  [27]
-
-        super().__init__(num_layer, online)
-
-    def show8x8(self, graph_s):
-        # address = ['0001', '0010', '0011', '0100', '0101', '0110', '0111', '1000']
-        address = ['1000','0111','0110','0101','0100','0011','0010','0001']
-        for i in range(8):
-            self.register.shift(0, address[i] + graph_s[i])
-
-    def _startPrint(self):
-        self.register = Register(self.DS, self.SHCP, self.STCP)
-        # setting disable shutdown and sacan limit
-        self.register.shift(0, '101100000111')
-        self.register.shift(0, '110000000001')
-
-        super().__init__()
+from matrix import LEDMatrix_p1, LEDMatrix_p2
 
 def get_layer(name):
     name = [abs(int(n) - 1) for n in name]
@@ -36,13 +11,24 @@ def get_layer(name):
 if __name__ == '__main__':
     try:
         player = input('Please choose player1 or player2: ')
+        online = input('If enter a online game room?(y/n): ')
+        if online = 'y':
+            game_id = int(input('Then, please input game room\'s id: '))
+
+            online = True
+        else:
+            game_id=None
+            onlin = False
 
         if player == '1':
-            matrix = LEDMatrix_p1(50)
+            matrix = LEDMatrix_p1(50, online=online, game_id=game_id)
         else:
-            matrix = LEDMatrix_p2(50)
+            matrix = LEDMatrix_p2(50, online=online, game_id=game_id)
 
-        matrix.startPrint()
+
+
+        th = Thread(target=matrix.startPrint)
+        th.start()
 
         gpio.setmode(gpio.BCM)
         btns = [
@@ -59,7 +45,7 @@ if __name__ == '__main__':
 
         while True:
             btn_inputs = [gpio.input(b['gpio']) for b in btns]
-            print("btns", btn_inputs)
+            # print("btns", btn_inputs)
 
             # btn map == now_layer map
             if layer == btn_inputs:
