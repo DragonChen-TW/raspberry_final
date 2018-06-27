@@ -28,7 +28,7 @@ class LEDMatrix:
         ]
         # for _ in range(int(100 * sec)):
         for i in range(8):
-            self.register.shift(0, graph_s[i])
+            self.register.shift(0, graph_s[i][::-1])
 
             self.register.shift(1, temp[i])
             time.sleep(0.001)
