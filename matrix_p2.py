@@ -26,7 +26,7 @@ class Matrix:
         while self.now_layer < self.max_layer:
             print(self.now_layer, end='')
             i = self.now_layer * 2
-            graph_slice = self.graph[i : i + width]
+            graph_slice = self.graph[i : i + 8]
 
             # print to 8x8
             self.show8x8(graph_slice)
