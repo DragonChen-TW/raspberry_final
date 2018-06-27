@@ -5,7 +5,7 @@ from threading import Thread
 from register import Register
 
 class Matrix:
-    def __init__(self, num_layer=20):
+    def __init__(self, num_layer=20, online=False):
         # DS, SHCP, STCP
         # CLK, CS, DIN
         # self.DS =    [17]
