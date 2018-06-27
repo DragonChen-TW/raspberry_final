@@ -14,10 +14,9 @@ if __name__ == '__main__':
         online = input('If enter a online game room?(y/n): ')
         if online == 'y':
             game_id = int(input('Then, please input game room\'s id: '))
-
             online = True
         else:
-            game_id=None
+            game_id = None
             online = False
 
         if player == '1':
