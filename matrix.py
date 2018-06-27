@@ -11,6 +11,7 @@ class Matrix:
 
         if online:
             self.game_id = game_id
+            self.p_name = p_name
             self.maps, self.graph = self.getGraph(game_id, p_name)
         else:
             self.maps, self.graph = self.makeGraph(num_layer)
@@ -24,7 +25,7 @@ class Matrix:
             # print to 8x8
             self.show8x8(graph_slice)
 
-    def getGraph(self, game_id, p_name):
+    def getGraph(self):
         url = 'http://140.117.71.66:8000/game/update/?game_id={}&player=reset'.format(game_id)
         requests.get(url)
 
