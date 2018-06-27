@@ -4,7 +4,7 @@ from threading import Thread
 
 from register import Register
 
-class LEDMatrix:
+class Matrix:
     def __init__(self, num_layer=20, online=False):
         self.DS =    [17, 13]
         self.SHCP =  [22, 26]

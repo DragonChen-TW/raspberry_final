@@ -2,6 +2,9 @@ import RPi.GPIO as gpio
 import time
 from threading import Thread
 
+from matrix_2p import LEDMatrix
+
+class LEDMatrix(Matrix):
 
 def compare_layer(layer, btn_inputs):
     pass
