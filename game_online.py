@@ -18,7 +18,7 @@ if __name__ == '__main__':
             online = True
         else:
             game_id=None
-            onlin = False
+            online = False
 
         if player == '1':
             matrix = LEDMatrix_p1(50, online=online, game_id=game_id)
