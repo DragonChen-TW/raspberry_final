@@ -24,7 +24,9 @@ class Matrix:
             self.show8x8(graph_slice)
 
     def getGraph(self, game_id):
-        res = requests.get('http://140.117.71.66:8000/game/graph/?id={}'.format(game_id))
+        url = 'http://140.117.71.66:8000/game/graph/?id={}'.format(game_id)
+        print(url)
+        res = requests.get(url)
         # print(res.text)
         res = json.loads(res.text)
 
