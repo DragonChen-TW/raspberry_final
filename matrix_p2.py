@@ -24,7 +24,7 @@ class Matrix:
         # self.register.shift(0, '110000000001')
 
         while self.now_layer < self.max_layer:
-            print(i)
+            print(self.now_layer, end='')
             i = self.now_layer * 2
             graph_slice = self.graph[i : i + width]
 
