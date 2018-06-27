@@ -12,7 +12,7 @@ class Matrix:
         if online:
             self.game_id = game_id
             self.p_name = p_name
-            self.maps, self.graph = self.getGraph(game_id, p_name)
+            self.maps, self.graph = self.getGraph()
         else:
             self.maps, self.graph = self.makeGraph(num_layer)
 
