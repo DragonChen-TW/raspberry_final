@@ -14,15 +14,16 @@ if __name__ == '__main__':
         online = input('If enter a online game room?(y/n): ')
         if online == 'y':
             game_id = int(input('Then, please input game room\'s id: '))
+            p_name = input('Please input your NickName: ')
             online = True
         else:
             game_id = None
             online = False
 
         if player == '1':
-            matrix = LEDMatrix_p1(50, online=online, game_id=game_id)
+            matrix = LEDMatrix_p1(50, online=online, game_id=game_id, p_name=p_name)
         else:
-            matrix = LEDMatrix_p2(50, online=online, game_id=game_id)
+            matrix = LEDMatrix_p2(50, online=online, game_id=game_id, p_name=p_name)
 
 
 

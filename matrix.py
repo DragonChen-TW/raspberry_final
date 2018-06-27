@@ -5,12 +5,13 @@ from threading import Thread
 from register import Register
 
 class Matrix:
-    def __init__(self, num_layer=20, online=False, game_id=None):
+    def __init__(self, num_layer=20, online=False, game_id=None, p_name=None):
         self.now_layer = 0
         self.max_layer = num_layer
 
         if online:
-            self.maps, self.graph = self.getGraph(game_id)
+            self.game_id = game_id
+            self.maps, self.graph = self.getGraph(game_id, p_name)
         else:
             self.maps, self.graph = self.makeGraph(num_layer)
 
@@ -23,11 +24,10 @@ class Matrix:
             # print to 8x8
             self.show8x8(graph_slice)
 
-    def getGraph(self, game_id):
-        url = 'http://140.117.71.66:8000/game/graph/?id={}'.format(game_id)
-        print(url)
+    def getGraph(self, game_id, p_name):
+        url = 'http://140.117.71.66:8000/game/graph/?id={}'.format(self.game_id)
+
         res = requests.get(url)
-        # print(res.text)
         res = json.loads(res.text)
 
         return res['maps'], res['graph']
