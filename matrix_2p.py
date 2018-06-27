@@ -58,7 +58,7 @@ class LEDMatrix:
             r_int = random.randint(0, len(keys) - 1)
 
             maps.append(keys[r_int])
-            graph += sub_data['two_layer'][keys[r_int]]
+            graph += sub_data[keys[r_int]]
 
 
         # to think
