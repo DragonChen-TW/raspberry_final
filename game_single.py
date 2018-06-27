@@ -28,7 +28,7 @@ class LEDMatrix_p2(Matrix):
         self.register.shift(0, '101100000111')
         self.register.shift(0, '110000000001')
 
-        super().__init__()
+        self.printLoop()
 
 def get_layer(name):
     name = [abs(int(n) - 1) for n in name]
