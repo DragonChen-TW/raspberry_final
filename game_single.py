@@ -2,6 +2,7 @@ import RPi.GPIO as gpio
 import time
 from threading import Thread
 
+from register import Register
 from matrix_p2 import Matrix
 
 class LEDMatrix_p1(Matrix):
