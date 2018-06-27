@@ -10,7 +10,7 @@ class Matrix:
         self.max_layer = num_layer
 
         if online:
-            self.maps, self.graph = self.getGraph(self.game_id)
+            self.maps, self.graph = self.getGraph(game_id)
         else:
             self.maps, self.graph = self.makeGraph(num_layer)
 
