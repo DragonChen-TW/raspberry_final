@@ -32,7 +32,10 @@ class Matrix:
         url = 'http://140.117.71.66:8000/game/graph/?id={}&player={}&p_name={}'.format(self.game_id, self.player, self.p_name)
 
         res = requests.get(url)
-        print(res.text)
+
+        with open('out.html', 'w') as html:
+            html.write(res.text)
+
         res = json.loads(res.text)
 
         return res['maps'], res['graph']
