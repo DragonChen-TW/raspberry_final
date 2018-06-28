@@ -74,9 +74,13 @@ class Matrix:
         # output sound
         # init()
         # music.load('')
+        mp3 = ['small.mp3', 'hihat.mp3', 'down.mp3', 'snare.mp3']
         now = self.maps[self.now_layer]
-        print('=====', self.maps[self.now_layer], '=====')
-        print('-----', now.index('1'), '-----')
+        # print('=====', self.maps[self.now_layer], '=====')
+        # print('-----', now.index('1'), '-----')
+        init()
+        music.load('music/' + mp3[now.index('1')])
+        music.start()
 
 
     def makeWords(words):
