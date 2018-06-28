@@ -1,12 +1,23 @@
 import RPi.GPIO as gpio
 import time
 from threading import Thread
+from pygame.mixer import init
+from pygame.mixer import music
 
 from matrix import LEDMatrix_p1, LEDMatrix_p2
 
 def get_layer(name):
     name = [abs(int(n) - 1) for n in name]
     return name
+
+def playOffline(matrix):
+    mp3 = ['small.mp3', 'hihat.mp3', 'down.mp3', 'snare.mp3']
+    now = matrix.maps[matrix.now_layer]
+    # print('=====', self.maps[self.now_layer], '=====')
+    # print('-----', now.index('1'), '-----')
+    init()
+    music.load('music/' + mp3[now.index('1')])
+    music.play()
 
 if __name__ == '__main__':
     try:
@@ -58,6 +69,9 @@ if __name__ == '__main__':
                 matrix.now_layer += 1
                 if online:
                     th2 = Thread(target=matrix.reqNext)
+                    th2.start()
+                else:
+                    th2 = Thread(target=playOffline, args=(matrix,))
                     th2.start()
 
                 layer = get_layer(matrix.maps[matrix.now_layer])
