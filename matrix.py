@@ -1,6 +1,8 @@
 import RPi.GPIO as gpio
 import json, time, random, requests
 from threading import Thread
+from pygame.mixer import init
+from pygame.mixer import music
 
 from register import Register
 
@@ -68,6 +70,14 @@ class Matrix:
     def reqNext(self):
         url = 'http://140.117.71.66:8000/game/update/?game_id={}&player={}'.format(self.game_id, self.player)
         res = requests.get(url)
+
+        # output sound
+        # init()
+        # music.load('')
+        now = self.maps[self.now_layer]
+        print('=====', self.maps[self.now_layer], '=====')
+        print('-----', now.index('1'), '-----')
+
 
     def makeWords(words):
         with open('data/hello.json') as json_f:
