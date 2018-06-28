@@ -18,6 +18,7 @@ if __name__ == '__main__':
             online = True
         else:
             game_id = None
+            p_name = ''
             online = False
 
         if player == '1':
