@@ -80,7 +80,7 @@ class Matrix:
         # print('-----', now.index('1'), '-----')
         init()
         music.load('music/' + mp3[now.index('1')])
-        music.start()
+        music.play()
 
 
     def makeWords(words):
