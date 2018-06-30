@@ -74,6 +74,7 @@ if __name__ == '__main__':
                 now = 1
                 while now <= 4:
                     dist = ultra.get_distance()
+                    print(now, dist)
                     # 4 ~ 10
                     # 5.5 7 8.5
                     if (now == 1 and dist < 5.5) or \
@@ -82,6 +83,7 @@ if __name__ == '__main__':
                     (now == 4 and dist >= 8.5):
                         now += 1
                         nextLayer()
+                    time.sleep(0.5)
 
                 layer = get_layer(matrix.maps[matrix.now_layer])
 
