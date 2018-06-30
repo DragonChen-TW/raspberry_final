@@ -24,6 +24,8 @@ def get_distance():
     global gpio_echo
     send_trigger()
 
+    start_t = 0
+    stop_t = 0
     while gpio.input(gpio_echo) == 0:
         start_t = time.time()
     while gpio.input(gpio_echo) == 1:
