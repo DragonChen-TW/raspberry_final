@@ -48,14 +48,18 @@ class Matrix:
 
         maps = []
         graph = []
-        for i in range(num_layer):
+        i = 0
+        while i < num_layer:
             r_int = random.randint(1, 10)
 
             if r_int == 10:
                 sub_data = data['ultra']
 
-                print(sub_data['1000'])
-                print(sub_data)
+                for c in ['1000', '0100', '0010', '0001']:
+                    maps.append(c)
+                    graph += sub_data[c]
+                    i += 1
+                continue
             else:
                 if r_int <= 7:
                     sub_data = data['one_layer']
@@ -68,6 +72,7 @@ class Matrix:
                 maps.append(keys[r_int])
                 graph += sub_data[keys[r_int]]
 
+            i += 1
 
         # to think
         graph += ["00000000"] * 8
@@ -159,3 +164,6 @@ class LEDMatrix_p2(Matrix):
 
 if __name__ == '__main__':
     m = LEDMatrix_p1()
+    from pprint import pprint
+    pprint(m.graph)
+    print(m.graph, sep='\n')
