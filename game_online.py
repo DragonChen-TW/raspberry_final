@@ -22,6 +22,8 @@ def playOffline(matrix):
 
 if __name__ == '__main__':
     try:
+        ultra.setup()
+
         player = input('Please choose player1 or player2: ')
         online = input('If enter a online game room?(y/n): ')
         if online == 'y':
@@ -58,31 +60,27 @@ if __name__ == '__main__':
 
         while True:
             # ===== ultra sound =====
-
-
+            if matrix.graph[matrix.now_layer * 2] == '10000000':
+                print(ultra.get_distance())
+            
             # ===== button =====
-            btn_inputs = [gpio.input(b['gpio']) for b in btns]
-            if btn_inputs == [0, 0, 0, 0]:
-                print(matrix.graph[matrix.now_layer * 2])
-            # print("btns", btn_inputs)
+            else:
+                btn_inputs = [gpio.input(b['gpio']) for b in btns]
+                if layer == btn_inputs:
+                    while layer == btn_inputs:
+                        time.sleep(0.1)
+                        btn_inputs = [gpio.input(b['gpio']) for b in btns]
 
-            # btn map == now_layer map
-            if layer == btn_inputs:
-                while layer == btn_inputs:
-                    time.sleep(0.1)
-                    btn_inputs = [gpio.input(b['gpio']) for b in btns]
+                    matrix.now_layer += 1
+                    if online:
+                        th2 = Thread(target=matrix.reqNext)
+                        th2.start()
+                    else:
+                        th2 = Thread(target=playOffline, args=(matrix,))
+                        th2.start()
 
-                print('press')
-                matrix.now_layer += 1
-                if online:
-                    th2 = Thread(target=matrix.reqNext)
-                    th2.start()
-                else:
-                    th2 = Thread(target=playOffline, args=(matrix,))
-                    th2.start()
-
-                layer = get_layer(matrix.maps[matrix.now_layer])
-                print('layer', layer)
+                    layer = get_layer(matrix.maps[matrix.now_layer])
+                    print('layer', layer)
 
             time.sleep(0.1)
     finally:
