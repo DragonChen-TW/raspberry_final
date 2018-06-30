@@ -58,11 +58,12 @@ if __name__ == '__main__':
 
         while True:
             # ===== ultra sound =====
-            if btn_inputs == [0, 0, 0, 0]:
-                print(matrix.graph[matrix.now_layer * 2])
+
 
             # ===== button =====
             btn_inputs = [gpio.input(b['gpio']) for b in btns]
+            if btn_inputs == [0, 0, 0, 0]:
+                print(matrix.graph[matrix.now_layer * 2])
             # print("btns", btn_inputs)
 
             # btn map == now_layer map
