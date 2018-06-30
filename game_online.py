@@ -83,7 +83,7 @@ if __name__ == '__main__':
                     (now == 4 and dist >= 8.5):
                         now += 1
                         nextLayer()
-                    time.sleep(0.5)
+                    time.sleep(0.1)
 
                 layer = get_layer(matrix.maps[matrix.now_layer])
 
