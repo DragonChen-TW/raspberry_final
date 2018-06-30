@@ -72,7 +72,7 @@ if __name__ == '__main__':
             # ===== ultra sound =====
             if matrix.graph[matrix.now_layer * 2] == '10000000':
                 now = 1
-                while True:
+                while now <= 4:
                     dist = ultra.get_distance()
                     # 4 ~ 10
                     # 5.5 7 8.5
