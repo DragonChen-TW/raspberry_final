@@ -5,7 +5,7 @@ from pygame.mixer import init
 from pygame.mixer import music
 
 from matrix import LEDMatrix_p1, LEDMatrix_p2
-from ultra import *
+import ultra
 
 def get_layer(name):
     name = [abs(int(n) - 1) for n in name]

@@ -50,16 +50,23 @@ class Matrix:
         graph = []
         for i in range(num_layer):
             r_int = random.randint(1, 10)
-            if r_int <= 7:
-                sub_data = data['one_layer']
+
+            if r_int == 10:
+                sub_data = data['ultra']
+
+                print(sub_data['1000'])
+                print(sub_data)
             else:
-                sub_data = data['two_layer']
+                if r_int <= 7:
+                    sub_data = data['one_layer']
+                else:
+                    sub_data = data['two_layer']
 
-            keys = list(sub_data.keys())
-            r_int = random.randint(0, len(keys) - 1)
+                keys = list(sub_data.keys())
+                r_int = random.randint(0, len(keys) - 1)
 
-            maps.append(keys[r_int])
-            graph += sub_data[keys[r_int]]
+                maps.append(keys[r_int])
+                graph += sub_data[keys[r_int]]
 
 
         # to think
@@ -149,3 +156,6 @@ class LEDMatrix_p2(Matrix):
         self.register.shift(0, '110000000001')
 
         self.printLoop()
+
+if __name__ == '__main__':
+    m = LEDMatrix_p1()
