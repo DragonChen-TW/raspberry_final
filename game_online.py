@@ -11,6 +11,16 @@ def get_layer(name):
     name = [abs(int(n) - 1) for n in name]
     return name
 
+def nextLayer():
+    global matrix, online
+    matrix.now_layer += 1
+    if online:
+        th2 = Thread(target=matrix.reqNext)
+        th2.start()
+    else:
+        th2 = Thread(target=playOffline, args=(matrix,))
+        th2.start()
+
 def playOffline(matrix):
     mp3 = ['small.mp3', 'hihat.mp3', 'down.mp3', 'snare.mp3']
     now = matrix.maps[matrix.now_layer]
@@ -61,8 +71,20 @@ if __name__ == '__main__':
         while True:
             # ===== ultra sound =====
             if matrix.graph[matrix.now_layer * 2] == '10000000':
-                print(ultra.get_distance())
-            
+                now = 1
+                while True:
+                    dist = ultra.get_distance()
+                    # 4 ~ 10
+                    # 5.5 7 8.5
+                    if (now == 1 and dist < 5.5) or \
+                    (now == 2 and (dist >= 5.5 and dist < 7)) or \
+                    (now == 3 and (dist >= 7 and dist < 8.5)) or \
+                    (now == 4 and dist >= 8.5):
+                        now += 1
+                        nextLayer()
+
+                layer = get_layer(matrix.maps[matrix.now_layer])
+
             # ===== button =====
             else:
                 btn_inputs = [gpio.input(b['gpio']) for b in btns]
@@ -71,13 +93,7 @@ if __name__ == '__main__':
                         time.sleep(0.1)
                         btn_inputs = [gpio.input(b['gpio']) for b in btns]
 
-                    matrix.now_layer += 1
-                    if online:
-                        th2 = Thread(target=matrix.reqNext)
-                        th2.start()
-                    else:
-                        th2 = Thread(target=playOffline, args=(matrix,))
-                        th2.start()
+                    nextLayer()
 
                     layer = get_layer(matrix.maps[matrix.now_layer])
                     print('layer', layer)
