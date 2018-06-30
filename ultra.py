@@ -4,8 +4,8 @@ import time
 def setup():
     global gpio_tri, gpio_echo
     gpio.setmode(gpio.BCM)
-    gpio_tri = 7
-    gpio_echo = 12
+    gpio_tri = 14
+    gpio_echo = 15
 
     gpio.setup(gpio_tri, gpio.OUT)
     gpio.setup(gpio_echo, gpio.IN)
