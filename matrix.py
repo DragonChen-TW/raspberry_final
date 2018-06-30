@@ -166,4 +166,3 @@ if __name__ == '__main__':
     m = LEDMatrix_p1()
     from pprint import pprint
     pprint(m.graph)
-    print(m.graph, sep='\n')
